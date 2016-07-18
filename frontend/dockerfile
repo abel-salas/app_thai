@@ -1,0 +1,21 @@
+FROM node:4
+
+WORKDIR /home/app_thai/frontend/
+
+EXPOSE 8080
+
+# install packages
+RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
+    apt-get install -y \
+        git && \
+    apt-get clean && apt-get autoclean
+
+# some packages needed
+RUN npm install -g gulp
+RUN npm install -g bower
+
+# execute repo script
+COPY ./run.sh /home/app_thai/frontend/run.sh
+RUN chmod +x /home/app_thai/frontend/run.sh
+CMD ["/home/app_thai/frontend/run.sh"]
+

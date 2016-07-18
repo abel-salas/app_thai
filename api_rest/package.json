@@ -1,0 +1,26 @@
+{
+  "name": "Thai-Api",
+  "description": "api pci thai ",
+  "main": "app.js",
+  "version": "0.0.1",
+  "dependencies": {
+    "body-parser": "1.14.2",
+    "cookie-parser": "^1.4.3",
+    "cookie-session": "^2.0.0-alpha.1",
+    "crypto": "0.0.3",
+    "express": "~4.13",
+    "express-session": "^1.14.0",
+    "mongo-express": "^0.30.56",
+    "mongoose": "^4.4.17",
+    "nconf": "^0.8.4",
+    "nodemon": "^1.8.1",
+    "request": "^2.67.0"
+  },
+  "scripts": {
+    "start": "node app.js"
+  },
+  "license": "SEE LICENSE IN <LICENSE>",
+  "engines": {
+    "node": ">=4"
+  }
+}
