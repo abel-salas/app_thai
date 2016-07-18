@@ -13,6 +13,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
 # some packages needed
 RUN npm install -g gulp
 RUN npm install -g bower
+RUN npm install -g nodemon
 
 # execute repo script
 COPY ./run.sh /home/app_thai/frontend/run.sh

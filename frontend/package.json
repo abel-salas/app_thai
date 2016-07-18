@@ -10,8 +10,8 @@
     "build": "browserify -t babelify ./app/app.js -o ./server/public/app.js",
     "watch": "watchify -t babelify ./app/app.js -o ./server/public/app.js --debug",
     "postinstall": "npm run create && npm run build",
-    "start": "nodemon ./server/index.js",
-    "serve": "npm run dev && npm run watch"
+    "dev": "node ./server/index.js",
+    "start": "npm run dev && npm run watch"
   },
   "dependencies": {
     "angular": "^1.5.7",
