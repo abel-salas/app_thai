@@ -12,14 +12,14 @@ import components from './components/components'
 import { AppComponent } from './app.component'
 
 const root = angular
-  .module('angularCamp', [
+  .module('ThaiApp', [
     uiRouter,
     common,
     components
   ])
-  .component('acApp', AppComponent)
+  .component('thaiApp', AppComponent)
 
 // Bootstrap the app.
-document.addEventListener('DOMContentLoaded', () => angular.bootstrap(document, ['angularCamp']))
+document.addEventListener('DOMContentLoaded', () => angular.bootstrap(document, ['ThaiApp']))
 
 export default root
