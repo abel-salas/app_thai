@@ -1,0 +1,32 @@
+{
+  "name": "Pci-Thai",
+  "version": "0.0.1",
+  "description": "app pci Thai",
+  "main": "index.js",
+  "author": "Abel salas <abelsalasbcn@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "create": "touch ./server/public/app.js",
+    "build": "browserify -t babelify ./app/app.js -o ./server/public/app.js",
+    "watch": "watchify -t babelify ./app/app.js -o ./server/public/app.js --debug",
+    "postinstall": "npm run create && npm run build",
+    "start": "node ./server/index.js",
+    "serve": "npm run dev && npm run watch"
+  },
+  "dependencies": {
+    "angular": "^1.5.7",
+    "angular-ui-router": "^1.0.0-alpha.5",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "morgan": "^1.7.0"
+  },
+  "devDependencies": {
+    "babel-polyfill": "^6.9.1",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-runtime": "^6.9.2",
+    "babelify": "^7.3.0",
+    "browserify": "^13.0.1",
+    "nodemon": "^1.9.2",
+    "watchify": "^3.7.0"
+  }
+}

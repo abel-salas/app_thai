@@ -5,11 +5,13 @@
  */
 
 class UserListController {
-  constructor () {
+  constructor (ngDialog) {
+    this.ngDialog = ngDialog
     this.message = 'Hi ngErs!'
   }
 
   sayHello ({ userName }) {
+
     window.alert(`Hello ${userName}!`)
   }
 }

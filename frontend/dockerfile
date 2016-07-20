@@ -20,3 +20,4 @@ COPY ./run.sh /home/app_thai/frontend/run.sh
 RUN chmod +x /home/app_thai/frontend/run.sh
 CMD ["/home/app_thai/frontend/run.sh"]
 
+
