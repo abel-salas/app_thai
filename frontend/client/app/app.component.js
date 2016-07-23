@@ -1,9 +1,9 @@
-import template from './app.html';
-import './app.styl';
 
-let appComponent = {
-  template,
-  restrict: 'E'
-};
-
-export default appComponent;
+export const AppComponent = {
+  template: `
+    <ac-header></ac-header>
+    <div ui-view></div>
+    <ac-footer></ac-footer>
+  </div>
+  `
+}

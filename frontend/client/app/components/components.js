@@ -1,14 +1,21 @@
-import angular from 'angular';
-import Home from './home/home';
-import About from './about/about';
+/**
+ * components/components.js
+ *
+ * Module that contains the specific components for the application.
+ */
 
-let componentModule = angular.module('app.components', [
-  Home,
-  About
-])
+import angular from 'angular'
 
-.name;
+import user    from './user'
+import service from './service'
+import product from './product'
 
+import Home from './home/home'
 
+const components = angular
+  .module('app.components', [
+    user
+  ])
+  .name
 
-export default componentModule;
+export default components
