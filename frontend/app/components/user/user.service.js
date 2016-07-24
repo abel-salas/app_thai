@@ -29,4 +29,12 @@ export default class UserService {
     return deferred.promise;
   }
 
+  createUser (user) {
+    var deferred = this.$q.defer();
+    this.$http.post(IP_API + PORT + '/user/create')
+        .then(response => deferred.resolve(response.data.content.data) )
+        .catch(error => deferred.reject(error) )
+    return deferred.promise;
+  }
+
 }

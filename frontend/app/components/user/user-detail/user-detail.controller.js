@@ -4,16 +4,15 @@
  * Controller for <user-list> component
  */
 
-class UserListController {
+class UserCreateController {
   constructor () {
     this.message = 'Hi ngErs!'
   }
 
-  sayHello ({ userName }) {
-    window.alert(`Hello ${userName}!`)
+  submitForm ( user ) {
+    console.log('vamos a crear user ',user);
   }
-
 
 }
 
-export default UserListController
+export default UserCreateController

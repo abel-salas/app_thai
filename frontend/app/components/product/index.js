@@ -18,7 +18,7 @@ const product = angular
     .component('productList', ProductListComponent)
     .config(($stateProvider, $urlRouterProvider) => {
         $stateProvider
-            .state('products', {
+            .state('index.products', {
                 url: '/products',
                 component: 'productList',
                 resolve: {

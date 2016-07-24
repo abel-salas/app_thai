@@ -18,7 +18,7 @@ const service = angular
   .component('serviceList', ServiceListComponent)
   .config(($stateProvider, $urlRouterProvider) => {
     $stateProvider
-      .state('services', {
+      .state('index.services', {
         url: '/services',
         component: 'serviceList',
         resolve: {
