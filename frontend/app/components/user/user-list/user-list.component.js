@@ -23,7 +23,7 @@ export const UserListComponent = {
 
     </ul>
 
-    <a class="btn-floating btn-large waves-effect waves-light red" ng-click="$ctrl.createUser()"><i class="material-icons">add</i></a>
+    <a class="btn-floating btn-large waves-effect waves-light red" ng-href="#/index/crear"><i class="material-icons">add</i></a>
 
   </div>
 

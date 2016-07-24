@@ -30,11 +30,15 @@ export default class UserService {
   }
 
   createUser (user) {
-    var deferred = this.$q.defer();
-    this.$http.post(IP_API + PORT + '/user/create')
-        .then(response => deferred.resolve(response.data.content.data) )
-        .catch(error => deferred.reject(error) )
-    return deferred.promise;
+    return this.$http.post(IP_API + PORT + '/user/create', user)
+  }
+
+  editUser (user) {
+    return this.$http.put(IP_API + PORT + '/user/update/' + user._id, user)
+  }
+
+  deleteUser (user) {
+    return  this.$http.delete(IP_API + PORT + '/user/delete/' + user._id)
   }
 
 }

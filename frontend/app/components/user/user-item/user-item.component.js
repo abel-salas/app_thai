@@ -21,7 +21,7 @@ export const UserItemComponent = {
       <p>{{$ctrl.data.phone}}<br>
          {{$ctrl.data.city}}
       </p>
-      <a ng-href="#/index/history/{{$ctrl.data._id}}" class="secondary-content"><i class="material-icons">grade</i></a>
+      <a ng-href="#/history/{{$ctrl.data._id}}" class="secondary-content"><i class="material-icons">grade</i></a>
     </li>
   `
 }

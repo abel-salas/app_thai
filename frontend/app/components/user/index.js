@@ -37,9 +37,9 @@ const user = angular
                 users: UserService => UserService.getUsers()
             }
         })
-        .state('index.history', {
+        .state('history', {
             url: '/history/:id',
-            component: 'userDetail',
+            component: 'userHistory',
             resolve: {
               user: (UserService, $stateParams) => UserService.getUser($stateParams.id)
           }
@@ -58,6 +58,10 @@ const user = angular
                 user: (UserService, $stateParams) => UserService.getUser($stateParams.id)
             }
         })
+          .state('index.crear', {
+              url: '/crear',
+              component: 'userDetail'
+          })
 
   })
   .name
