@@ -9,7 +9,7 @@ export const HeaderComponent = {
     <nav>
       <div class="nav-wrapper">
           <div class="container">
-            <a href="#!" class="brand-logo">Centro Thai</a>
+            <a href="#!" class="brand-logo">Demo</a>
 
             <ul class="right hide-on-med-and-down">
               <li><a href="#/index/users">Usuarios</a></li>

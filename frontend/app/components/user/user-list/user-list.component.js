@@ -14,6 +14,7 @@ export const UserListComponent = {
   },
   controller,
   template: `
+  <div class="container">
     <ul class="collection">
 
         <user-item ng-repeat="user in $ctrl.users"

@@ -7,6 +7,7 @@ export const UserDetailComponent = {
   },
   controller,
   template: `
+  <div class="container">
     <article class="card">
       <section class="card-content">
          <div class="row">
@@ -64,15 +65,19 @@ export const UserDetailComponent = {
                 <label for="email" ng-class="$ctrl.ifEmpty($ctrl.user.email)">Email</label>
               </div>
             </div>
-            <button class="btn waves-effect waves-light right" ng-click="$ctrl.deleteUser($ctrl.user)">Eliminar
+
+            <button type="reset" class="btn waves-effect waves-light" ng-click="$ctrl.deleteUser($ctrl.user)" style="background:#d81b60;">Eliminar
                 <i class="material-icons right">report_problem</i>
             </button>
-            <button type="submit" class="waves-effect waves-light btn">Enviar
+
+            <button type="submit" class="waves-effect waves-light btn right">Enviar
                 <i class="material-icons right">send</i>
             </button>
+          
           </form>
         </div>
       </section>
     </article>
+  </div>
   `
 }

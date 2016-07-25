@@ -11,6 +11,7 @@ class SpeakerListController {
 
   sayHello ({ speakerName }) {
     window.alert(`Hello ${speakerName}!`)
+    Materialize.toast('I am a toast!', 4000)
   }
 }
 

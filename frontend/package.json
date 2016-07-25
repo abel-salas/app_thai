@@ -4,7 +4,6 @@
   "description": "app pci Thai",
   "main": "index.js",
   "author": "Abel salas <abelsalasbcn@gmail.com>",
-  "license": "MIT",
   "scripts": {
     "create": "touch ./server/public/app.js",
     "build": "browserify -t babelify ./app/app.js -o ./server/public/app.js",
