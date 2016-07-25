@@ -29,4 +29,16 @@ export default class UserService {
     return deferred.promise;
   }
 
+  createUser (user) {
+    return this.$http.post(IP_API + PORT + '/user/create', user)
+  }
+
+  editUser (user) {
+    return this.$http.put(IP_API + PORT + '/user/update/' + user._id, user)
+  }
+
+  deleteUser (user) {
+    return  this.$http.delete(IP_API + PORT + '/user/delete/' + user._id)
+  }
+
 }

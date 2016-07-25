@@ -15,11 +15,17 @@ export const UserListComponent = {
   controller,
   template: `
     <ul class="collection">
-      <user-item ng-repeat="user in $ctrl.users"
+
+        <user-item ng-repeat="user in $ctrl.users"
                     data="user"
                     on-say-hello="$ctrl.sayHello($event);">
-      </user-item>
+        </user-item>
+
     </ul>
+
+    <a class="btn-floating btn-large waves-effect waves-light red" ng-href="#/index/crear"><i class="material-icons">add</i></a>
+
+  </div>
 
   `
 }

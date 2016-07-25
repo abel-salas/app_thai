@@ -4,16 +4,14 @@
  * Controller for <user-list> component
  */
 
-class UserListController {
+class UserHistoryController {
   constructor () {
     this.message = 'Hi ngErs!'
   }
 
-  sayHello ({ userName }) {
-    window.alert(`Hello ${userName}!`)
+  go(){
+    console.log('hello')
   }
-
-
 }
 
-export default UserListController
+export default UserHistoryController
