@@ -5,13 +5,13 @@
  */
 
 class UserListController {
-  constructor () {
-    this.message = 'Hi ngErs!'
-  }
+    constructor() {
+        this.message = 'Hi ngErs!'
+    }
 
-  sayHello ({ userName }) {
-    window.alert(`Hello ${userName}!`)
-  }
+    sayHello({ userName }) {
+        window.alert(`Hello ${userName}!`)
+    }
 
 
 }

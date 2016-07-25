@@ -12,12 +12,12 @@ import service from './service'
 import product from './product'
 
 const components = angular
-  .module('app.components', [
-      speaker,
-      user,
-      service,
-      product
-  ])
-  .name
+    .module('app.components', [
+        speaker,
+        user,
+        service,
+        product
+    ])
+    .name
 
 export default components

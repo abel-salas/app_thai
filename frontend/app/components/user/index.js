@@ -22,48 +22,50 @@ const user = angular
     .component('userHistory', UserHistoryComponent)
     .config(($stateProvider, $urlRouterProvider) => {
 
-      $stateProvider
-        .state('index', {
-            url: '/index',
-            template: `
+        $stateProvider
+            .state('index', {
+                url: '/index',
+                template: `
                 <ac-header></ac-header>
-                <div class="row">
-                    <div class="col s4 push-s8"><span class="flow-text">Seccion para la caja</span></div>
-                    <div class="col s8 pull-s4" ui-view></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col s4 push-s8"><span class="flow-text">Seccion para la caja</span></div>
+                        <div class="col s8 pull-s4" ui-view></div>
+                    </div>
                 </div>
                 <ac-footer></ac-footer>
             `,
-            resolve: {
-                users: UserService => UserService.getUsers()
-            }
-        })
-        .state('history', {
-            url: '/history/:id',
-            component: 'userHistory',
-            resolve: {
-              user: (UserService, $stateParams) => UserService.getUser($stateParams.id)
-          }
-        })
-        .state('index.users', {
-            url: '/users',
-            component: 'userList',
-            resolve: {
-                users: UserService => UserService.getUsers()
-            }
-        })
-        .state('index.user', {
-            url: '/user/:id',
-            component: 'userDetail',
-            resolve: {
-                user: (UserService, $stateParams) => UserService.getUser($stateParams.id)
-            }
-        })
-          .state('index.crear', {
-              url: '/crear',
-              component: 'userDetail'
-          })
+                resolve: {
+                    users: UserService => UserService.getUsers()
+                }
+            })
+            .state('history', {
+                url: '/history/:id',
+                component: 'userHistory',
+                resolve: {
+                    user: (UserService, $stateParams) => UserService.getUser($stateParams.id)
+                }
+            })
+            .state('index.users', {
+                url: '/users',
+                component: 'userList',
+                resolve: {
+                    users: UserService => UserService.getUsers()
+                }
+            })
+            .state('index.user', {
+                url: '/user/:id',
+                component: 'userDetail',
+                resolve: {
+                    user: (UserService, $stateParams) => UserService.getUser($stateParams.id)
+                }
+            })
+            .state('index.create-user', {
+                url: '/crear',
+                component: 'userDetail'
+            })
 
-  })
-  .name
+    })
+    .name
 
 export default user

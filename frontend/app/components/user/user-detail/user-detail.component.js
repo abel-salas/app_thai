@@ -7,7 +7,6 @@ export const UserDetailComponent = {
   },
   controller,
   template: `
-  <div class="container">
     <article class="card">
       <section class="card-content">
          <div class="row">
@@ -78,6 +77,5 @@ export const UserDetailComponent = {
         </div>
       </section>
     </article>
-  </div>
   `
 }

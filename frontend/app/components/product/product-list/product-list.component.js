@@ -14,11 +14,20 @@ export const ProductListComponent = {
   },
   controller,
   template: `
+
+    <div class="input-field">
+        <i class="material-icons prefix">search</i>
+        <input id="icon_prefix" type="text" class="validate" ng-model="$ctrl.search">
+        <label for="icon_prefix">First Name</label>
+    </div>
+
     <ul class="collection">
-      <product-item ng-repeat="product in $ctrl.products"
+
+      <product-item ng-repeat="product in $ctrl.products  | filter:$ctrl.search"
                     data="product"
                     on-say-hello="$ctrl.sayHello($event);">
       </product-item>
+
     </ul>
   `
 }

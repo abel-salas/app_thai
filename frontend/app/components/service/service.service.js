@@ -32,4 +32,16 @@ export default class ServiceService {
     return deferred.promise;
   }
 
+  createService(service) {
+    return this.$http.post(IP_API + PORT + '/service', service)
+  }
+
+  editService(service) {
+    return this.$http.put(IP_API + PORT + '/service/' + service._id, service)
+  }
+
+  deleteService(service) {
+    return this.$http.delete(IP_API + PORT + '/service/' + service._id)
+  }
+
 }

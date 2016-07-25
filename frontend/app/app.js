@@ -12,12 +12,12 @@ import components from './components/components'
 import { AppComponent } from './app.component'
 
 const root = angular
-  .module('ThaiApp', [
-    uiRouter,
-    common,
-    components
-  ])
-  .component('thaiApp', AppComponent)
+    .module('ThaiApp', [
+        uiRouter,
+        common,
+        components
+    ])
+    .component('thaiApp', AppComponent)
 
 // Bootstrap the app.
 document.addEventListener('DOMContentLoaded', () => angular.bootstrap(document, ['ThaiApp']))

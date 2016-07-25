@@ -1,4 +1,3 @@
-
 /**
  * app.component.js
  *
@@ -6,7 +5,7 @@
  */
 
 export const AppComponent = {
-  template: `
+    template: `
     <div ui-view></div>
   `
 }

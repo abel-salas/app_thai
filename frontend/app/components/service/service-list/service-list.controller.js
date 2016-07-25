@@ -5,13 +5,19 @@
  */
 
 class ServiceListController {
-  constructor () {
-    this.message = 'Hi ngErs!'
+
+  constructor ($state) {
+    this.$state = $state
   }
 
   sayHello ({ userName }) {
     window.alert(`Hello ${userName}!`)
   }
+
+  createService() {
+    this.$state.go('index.createService')
+  }
+
 }
 
 export default ServiceListController

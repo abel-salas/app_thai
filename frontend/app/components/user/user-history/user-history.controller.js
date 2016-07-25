@@ -5,13 +5,13 @@
  */
 
 class UserHistoryController {
-  constructor () {
-    this.message = 'Hi ngErs!'
-  }
+    constructor() {
+        this.message = 'Hi ngErs!'
+    }
 
-  go(){
-    console.log('hello')
-  }
+    go() {
+        console.log('hello')
+    }
 }
 
 export default UserHistoryController
