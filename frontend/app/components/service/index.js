@@ -28,6 +28,13 @@ const service = angular
                     services: ServiceService => ServiceService.getServices()
                 }
             })
+            .state('index.service', {
+                url: '/service/:id',
+                component: 'serviceDetail',
+                resolve: {
+                    service: (ServiceService, $stateParams) => ServiceService.getService($stateParams.id)
+                }
+            })
             .state('index.createService', {
                 url: '/create-service',
                 component: 'serviceDetail'

@@ -65,7 +65,10 @@ export const UserDetailComponent = {
               </div>
             </div>
 
-            <button type="reset" class="btn waves-effect waves-light" ng-click="$ctrl.deleteUser($ctrl.user)" style="background:#d81b60;">Eliminar
+            <button type="reset" class="btn waves-effect waves-light"
+                    ng-click="$ctrl.deleteUser($ctrl.user)"
+                    ng-if="!$ctrl.createService"
+                    style="background:#d81b60;">Eliminar
                 <i class="material-icons right">report_problem</i>
             </button>
 

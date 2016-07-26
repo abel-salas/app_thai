@@ -10,6 +10,12 @@ module.exports = function(app, request) {
 
   app.get('/services/', controller.getAllServices);
 
+  /*
+   * PRODUCT GET SERVICES
+   */
+
+  app.get('/service/:id', controller.getService);
+
 
   /*
    *  PRODUCT POST NOTIFICATION
