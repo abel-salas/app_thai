@@ -65,6 +65,8 @@ const user = angular
                 component: 'userDetail'
             })
 
+            $urlRouterProvider.otherwise('/index/users')
+
     })
     .name
 

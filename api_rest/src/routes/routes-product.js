@@ -12,6 +12,13 @@ module.exports = function(app, request) {
 
 
   /*
+   * GET PRODUCT
+   */
+
+  app.get('/product/:id', controller.getProduct);
+
+
+  /*
    *  PRODUCT POST
    */
 
