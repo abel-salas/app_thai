@@ -9,20 +9,47 @@
 import controller from './user-item.controller.js'
 
 export const UserItemComponent = {
-  bindings: {
-    data: '<',
-    onSayHello: '&'
-  },
-  controller,
-  template: `
-    <li class="collection-item avatar">
-      <i class="material-icons circle">contacts</i>
-      <a ng-href="#/index/user/{{$ctrl.data._id}}"><span class="title">{{$ctrl.data.name}} {{$ctrl.data.lastName}}</span></a>
-      <p>{{$ctrl.data.phone}}<br>
-         {{$ctrl.data.city}}
-      </p>
-      <a ng-href="#/history/{{$ctrl.data._id}}" class="secondary-content"><i class="material-icons">mode_edit</i></a>
-    </li>
-  `
+    bindings: {
+        data: '<',
+        inputSearch: '<',
+        onSayHello: '&'
+    },
+    controller,
+    template: `
+        <table class="striped">
+
+            <thead>
+              <tr>
+                  <th></th>
+                  <th data-field="name">Nombre</th>
+                  <th data-field="lastName">Apellidos</th>
+                  <th data-field="phone">Teléfono</th>
+                  <th data-field="email">Email</th>
+                  <th data-field="city">Población</th>
+                  <th data-field="actions">Acciones</th>
+              </tr>
+            </thead>
+
+            <tbody>
+                <tr ng-repeat="user in $ctrl.data | filter:$ctrl.inputSearch">
+                    <td><i class="small material-icons">perm_identity</i></td>
+                    <td>{{user.name}}</td>
+                    <td>{{user.lastName}}</td>
+                    <td>{{user.phone}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.city}}</td>
+                    <td>
+                        <a ng-href="#/index/user/{{user._id}}">
+                            <i class="material-icons circle">mode_edit</i>
+                        </a>
+                        <a ng-href="#/history/{{user._id}}" class="secondary-content">
+                            <i class="material-icons">input</i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+    `
 }
 

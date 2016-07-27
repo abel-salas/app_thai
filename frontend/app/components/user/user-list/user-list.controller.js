@@ -13,7 +13,6 @@ class UserListController {
         window.alert(`Hello ${userName}!`)
     }
 
-
 }
 
 export default UserListController
