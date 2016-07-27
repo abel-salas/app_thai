@@ -28,6 +28,7 @@ server/public/app.js
 .Cache
 .DS_Store
 .idea
+.temp/
 .project
 .settings
 .tmproj
