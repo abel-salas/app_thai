@@ -29,5 +29,7 @@ export const ProductListComponent = {
       </product-item>
 
     </ul>
+
+    <a class="btn-floating btn-large waves-effect waves-light red" ng-click="$ctrl.createProduct()"><i class="material-icons">add</i></a>
   `
 }

@@ -1,8 +1,17 @@
 var Service = require("../model/model-service.js");
 
 
+exports.getService = (req, res) => {
+
+  Service.findById(req.params.id, function (err, user) {
+
+    callbackResponse(err, res, user);
+
+  });
+
+}
+
 exports.getAllServices = function(req, res) {
-  console.log('__________ get Client Notifications By Id __________');
 
   Service.find({}, function (err, AllServices) {
 
@@ -17,10 +26,8 @@ exports.getAllServices = function(req, res) {
 
     res.status(res.statusCode).json({
       status: res.statusCode,
-      content: {
-        message: 'too coorrecto',
-        data: AllServices
-      }
+      message: 'too coorrecto',
+      data: AllServices
     });
 
   });
@@ -29,7 +36,6 @@ exports.getAllServices = function(req, res) {
 
 
 exports.addService = function(req, res) {
-  console.log('______________ Post add Service ______________');
 
   var service = new Service({
     "name": req.body.name,
@@ -59,7 +65,6 @@ exports.addService = function(req, res) {
 
 
 exports.updateService = function(req, res){
-  console.log('UPDATE service By ID');
 
   Service.findById(req.params.id, function (err, service) {
       service.name = req.body.name;
@@ -111,3 +116,20 @@ exports.deleteService = function(req, res) {
 
 };
 
+function callbackResponse(err,res,data){
+
+  var statusCode = 200;
+  var message = "Ok";
+
+  if (err) {
+    return res.status(400).json({
+      status: 400,
+      message: err.toString()
+    });
+  }
+
+  res.status(statusCode).json({
+    message: message,
+    data: data
+  });
+};

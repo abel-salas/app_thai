@@ -20,21 +20,21 @@ class ServiceDetailController {
 
   }
 
-  submitForm(user){
+  submitForm(service){
     switch (this.createService){
       case true:
-        this.ServiceService.createService(user)
+        this.ServiceService.createService(service)
             .then(response => {
-              Materialize.toast( user.name + ' ha sido Creado correctamente!', 3000)
-              this.$state.go('index.users')
+              Materialize.toast( service.name + ' ha sido Creado correctamente!', 3000)
+              this.$state.go('index.services')
             })
             .catch(error => Materialize.toast( 'Hemos tenido un error al Crear el usuario!', 3000) )
         break;
       case false:
-        this.ServiceService.editService(user)
+        this.ServiceService.editService(service)
             .then(response => {
-              Materialize.toast( user.name + ' ha sido Modificado correctamente!', 3000) 
-              this.$state.go('index.users')
+              Materialize.toast( service.name + ' ha sido Modificado correctamente!', 3000)
+              this.$state.go('index.services')
             })
             .catch(error => Materialize.toast('Hemos tenido un error al Modificar el usuario!', 3000) )
         break;
@@ -47,13 +47,13 @@ class ServiceDetailController {
       }
   }
 
-  deleteService(user) {
-    this.ServiceService.deleteService(user)
+  deleteService(service) {
+    this.ServiceService.deleteService(service)
         .then(response => {
-          Materialize.toast( user.name + ' ha sido Eliminado correctamente!', 3000)
-          this.$state.go('index.users')
+          Materialize.toast( service.name + ' ha sido Eliminado correctamente!', 3000)
+          this.$state.go('index.services')
         })
-        .catch(error => Materialize.toast( user.name + 'Hemos tenido un error al Eliminar el usuario!', 3000) )
+        .catch(error => Materialize.toast( service.name + 'Hemos tenido un error al Eliminar el usuario!', 3000) )
   }
 
 

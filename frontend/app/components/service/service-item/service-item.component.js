@@ -16,14 +16,14 @@ export const ServiceItemComponent = {
   controller,
   template: `
     <li class="collection-item avatar" style="border-bottom: 1px solid #cccccc;">
-      <span class="title">{{$ctrl.data.name}}</span>
+      <a ng-href="#/index/service/{{$ctrl.data._id}}"><span class="title">{{$ctrl.data.name}}</span></a>
       <p>
         {{$ctrl.data.type}}
         {{$ctrl.data.brand}}
         {{$ctrl.data.description}}
         {{$ctrl.data.created}}
       </p>
-      <div class="secondary-content" style="cursor: pointer;" ng-click="$ctrl.onClick();">
+      <div class="secondary-content" ng-click="$ctrl.onClick();">
         <i class="material-icons">thumb_up</i>
       </div>
     </li>

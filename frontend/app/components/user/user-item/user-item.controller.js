@@ -15,6 +15,10 @@ class UserItemController {
             }
         })
     }
+
+    goToDetailService() {
+
+    }
 }
 
 export default UserItemController

@@ -1,5 +1,14 @@
 var Product = require("../model/model-product.js");
 
+exports.getProduct = (req, res) => {
+
+  Product.findById(req.params.id, function (err, user) {
+
+    callbackResponse(err, res, user);
+
+  });
+
+}
 
 exports.getAllProducts = function(req, res) {
   console.log('__________ get all products __________');
@@ -113,3 +122,20 @@ exports.deleteProduct = function(req, res) {
 
 };
 
+function callbackResponse(err,res,data){
+
+  var statusCode = 200;
+  var message = "Ok";
+
+  if (err) {
+    return res.status(400).json({
+      status: 400,
+      message: err.toString()
+    });
+  }
+
+  res.status(statusCode).json({
+    message: message,
+    data: data
+  });
+};

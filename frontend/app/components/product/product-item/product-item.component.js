@@ -16,7 +16,7 @@ export const ProductItemComponent = {
   controller,
   template: `
     <li class="collection-item avatar" style="border-bottom: 1px solid #cccccc;">
-      <span class="title">{{$ctrl.data.name}}</span>
+      <a ng-href="#/index/product/{{$ctrl.data._id}}"><span class="title">{{$ctrl.data.name}}</span></a>
       <p>
         {{$ctrl.data.type}}
         {{$ctrl.data.brand}}
