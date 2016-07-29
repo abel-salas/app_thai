@@ -14,24 +14,21 @@ export const UserListComponent = {
     },
     controller,
     template: `
-
-         <div class="input-field">
-              <i class="material-icons prefix">search</i>
-              <input id="icon_prefix" type="text" class="validate" ng-model="$ctrl.search">
-              <label for="icon_prefix">First Name</label>
+         <div class="row" style="margin-top: 15px;">
+             <div class="input-field col s6">
+                  <i class="material-icons prefix">search</i>
+                  <input id="icon_prefix" type="text" class="validate" ng-model="$ctrl.search">
+                  <label for="icon_prefix">First Name</label>
+             </div>
          </div>
 
+        <user-item data="$ctrl.users" on-say-hello="$ctrl.sayHello($event);" input-search="$ctrl.search"></user-item>
 
-        <ul class="collection">
-
-            <user-item ng-repeat="user in $ctrl.users | filter:$ctrl.search"
-                        data="user"
-                        on-say-hello="$ctrl.sayHello($event);">
-            </user-item>
-
-        </ul>
-
-        <a class="btn-floating btn-large waves-effect waves-light red" ng-href="#/index/crear"><i class="material-icons">add</i></a>
+        <a class="btn-floating btn-large waves-effect waves-light red"
+           ng-href="#/index/crear"
+           style="margin-top: 15px;">
+            <i class="material-icons">add</i>
+        </a>
 
 
   `
