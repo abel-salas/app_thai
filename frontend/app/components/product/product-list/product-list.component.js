@@ -15,21 +15,33 @@ export const ProductListComponent = {
   controller,
   template: `
 
-    <div class="input-field">
-        <i class="material-icons prefix">search</i>
-        <input id="icon_prefix" type="text" class="validate" ng-model="$ctrl.search">
-        <label for="icon_prefix">First Name</label>
+      <div class="row">
+          <div class="input-field col s5">
+               <i class="material-icons prefix">search</i>
+               <input id="icon_prefix" type="text" class="validate" ng-model="$ctrl.search.input">
+               <label for="icon_prefix">First Name</label>
+          </div>
+
+          <div class="input-field col s7">
+
+               <input type="checkbox" id="test1"
+                      ng-model="$ctrl.search.type1"
+                      ng-false-value="''"
+                      ng-true-value="'skeindor'"/>
+               <label for="test1" class="mr-20">Skeindor</label>
+
+               <input type="checkbox" id="test2"
+                      ng-model="$ctrl.search.type2"
+                      ng-false-value="''"
+                      ng-true-value="'phyt'"/>
+               <label for="test2" class="mr-20">Phyt's</label>
+
+          </div>
     </div>
 
-    <ul class="collection">
+    <product-item data="$ctrl.products" on-say-hello="$ctrl.sayHello($event)" search="$ctrl.search"></product-item>
 
-      <product-item ng-repeat="product in $ctrl.products  | filter:$ctrl.search"
-                    data="product"
-                    on-say-hello="$ctrl.sayHello($event);">
-      </product-item>
 
-    </ul>
-
-    <a class="btn-floating btn-large waves-effect waves-light red" ng-click="$ctrl.createProduct()"><i class="material-icons">add</i></a>
+    <a class="btn-floating btn-large waves-effect waves-light pink accent-2" ng-click="$ctrl.createProduct()"><i class="material-icons">add</i></a>
   `
 }

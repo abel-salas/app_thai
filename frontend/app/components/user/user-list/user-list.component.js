@@ -14,7 +14,7 @@ export const UserListComponent = {
     },
     controller,
     template: `
-         <div class="row" style="margin-top: 15px;">
+         <div class="row">
              <div class="input-field col s6">
                   <i class="material-icons prefix">search</i>
                   <input id="icon_prefix" type="text" class="validate" ng-model="$ctrl.search">
@@ -24,7 +24,7 @@ export const UserListComponent = {
 
         <user-item data="$ctrl.users" on-say-hello="$ctrl.sayHello($event);" input-search="$ctrl.search"></user-item>
 
-        <a class="btn-floating btn-large waves-effect waves-light red"
+        <a class="btn-floating btn-large waves-effect waves-light pink accent-2"
            ng-href="#/index/crear"
            style="margin-top: 15px;">
             <i class="material-icons">add</i>

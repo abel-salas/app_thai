@@ -10,7 +10,7 @@ export const ProductDetailComponent = {
     <article class="card">
       <section class="card-content">
          <div class="row">
-          <form class="col s12" ng-submit="$ctrl.submitForm($ctrl.product)">
+          <form class="col s12 mt-20" ng-submit="$ctrl.submitForm($ctrl.product)">
             <div class="row">
               <div class="input-field col s6">
                 <i class="material-icons prefix">account_circle</i>
@@ -20,7 +20,7 @@ export const ProductDetailComponent = {
               <div class="input-field col s6">
                 <i class="material-icons prefix">receipt</i>
                 <input id="last_name" type="text" class="validate" ng-model="$ctrl.product.type">
-                <label for="last_name" ng-class="$ctrl.ifEmpty($ctrl.product.type)">Tipo de servicio</label>
+                <label for="last_name" ng-class="$ctrl.ifEmpty($ctrl.product.type)">Tipo de producto</label>
               </div>
             </div>
 
@@ -39,23 +39,23 @@ export const ProductDetailComponent = {
 
             </div>
 
-            <div class="row">
+            <div class="row mb-60">
               <div class="input-field col s12">
                 <i class="material-icons prefix">description</i>
                 <input id="text" type="text" class="validate" ng-model="$ctrl.product.description">
-                <label for="email" ng-class="$ctrl.ifEmpty($ctrl.product.description)">Descripción del servicio</label>
+                <label for="email" ng-class="$ctrl.ifEmpty($ctrl.product.description)">Descripción del producto</label>
               </div>
             </div>
 
-            <button type="reset"
-                    class="btn waves-effect waves-light"
-                    ng-click="$ctrl.deleteProduct($ctrl.product)"
-                    ng-if="!$ctrl.createProduct"
-                    style="background:#d81b60;">Eliminar
-                <i class="material-icons right">report_problem</i>
-            </button>
+            <a class="btn-floating pink accent-2"
+               type="reset"
+               ng-click="$ctrl.deleteProduct($ctrl.product)"
+               ng-if="!$ctrl.createProduct">
 
-            <button type="submit" class="waves-effect waves-light btn right">Enviar
+                <i class="material-icons">delete</i>
+            </a>
+
+            <button type="submit" class="waves-effect waves-light btn right indigo">Enviar
                 <i class="material-icons right">send</i>
             </button>
           

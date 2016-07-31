@@ -5,19 +5,16 @@
  */
 
 class UserItemController {
-    constructor() {
+    constructor($log) {
+        this.$log = $log;
     }
 
-    onClick() {
-        this.onSayHello({
-            $event: {
-                userName: this.data.name
-            }
-        })
+    onClick(value) {
+        this.$log.log('aqui saludamos', value);
+        this.onSayHello(value)
     }
 
     goToDetailService() {
-
     }
 }
 

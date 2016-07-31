@@ -5,15 +5,18 @@
  */
 
 class ServiceItemController {
-  constructor () {}
+    constructor() {
+    }
 
-  onClick () {
-    this.onSayHello({
-      $event: {
-        userName: this.data.name
-      }
-    })
-  }
+    onClick() {
+        this.onSayHello({
+
+            $event: {
+                userName: this.data.name
+            }
+
+        })
+    }
 }
 
 export default ServiceItemController

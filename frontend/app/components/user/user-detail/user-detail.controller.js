@@ -15,7 +15,6 @@ class UserDetailController {
     switch (this.user == undefined){
       case true:
         this.createUser = true
-        console.log(this.user)
     }
 
   }

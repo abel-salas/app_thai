@@ -9,8 +9,8 @@ class UserListController {
         this.message = 'Hi ngErs!'
     }
 
-    sayHello({ userName }) {
-        window.alert(`Hello ${userName}!`)
+    sayHello(user) {
+        console.log('Output User', user)
     }
 
 }

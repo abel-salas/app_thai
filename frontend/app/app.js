@@ -24,13 +24,15 @@ const root = angular
             .state('index', {
                 url: '/index',
                 template: `
-                <ac-header></ac-header>
-                <div class="row">
-                    <div class="col s8" ui-view></div>
-                    <div class="col s4"><span class="flow-text">Seccion para la caja</span></div>
-                </div>
-                <ac-footer></ac-footer>
-            `
+                    <ac-header></ac-header>
+                    <div class="row">
+                        <div class="col s8" ui-view></div>
+                        <div class="col s4">
+                            <cart-list></cart-list>
+                        </div>
+                    </div>
+                    <ac-footer></ac-footer>
+                `
             })
     })
 

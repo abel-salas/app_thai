@@ -6,6 +6,7 @@
 
 import angular from 'angular'
 
+import cart    from './cart'
 import user    from './user'
 import service from './service'
 import product from './product'
@@ -14,7 +15,8 @@ const components = angular
     .module('app.components', [
         user,
         service,
-        product
+        product,
+        cart
     ])
     .name
 
