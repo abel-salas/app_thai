@@ -6,8 +6,8 @@
 
 export const HeaderComponent = {
   template: `
-    <nav>
-      <div class="nav-wrapper">
+    <nav class="mb-30">
+      <div class="nav-wrapper pink accent-2">
           <div class="container">
             <a href="#!" class="brand-logo">Demo</a>
 

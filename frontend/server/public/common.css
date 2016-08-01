@@ -1,0 +1,48 @@
+/* margin bottom*/
+.ml-20{
+    margin-left: 20px;
+}
+.mr-20{
+    margin-right: 20px;
+}
+.mt-20{
+    margin-top: 20px;
+}
+.mb-20{
+    margin-bottom: 20px;
+}
+.mb-30{
+    margin-bottom: 30px
+}
+.mb-40{
+    margin-bottom: 40px;
+}
+.mb-50{
+    margin-bottom: 50px;
+}
+.mb-60{
+    margin-bottom: 60px;
+}
+
+/* button price item */
+.btn_price{
+    right: 30px;
+    bottom: 30px;
+    text-align: center;
+    font-weight: bold;
+}
+/* button edit item colapsed */
+.button_edit{
+    position: absolute;
+    bottom: 20px;
+}
+
+.button_action_flat{
+    background: none;
+    border: none;
+    padding: 6px 10px 0;
+}
+
+.no-border{
+    border:none;
+}

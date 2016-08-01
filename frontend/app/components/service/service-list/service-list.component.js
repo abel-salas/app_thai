@@ -14,23 +14,50 @@ export const ServiceListComponent = {
     },
     controller,
     template: `
+    <div class="row">
 
-    <div class="input-field">
-        <i class="material-icons prefix">search</i>
-        <input id="icon_prefix" type="text" class="validate" ng-model="$ctrl.search">
-        <label for="icon_prefix">First Name</label>
+          <div class="input-field col s5">
+               <i class="material-icons prefix">search</i>
+               <input id="icon_prefix" type="text" class="validate" ng-model="$ctrl.search.input">
+               <label for="icon_prefix">First Name</label>
+          </div>
+
+          <div class="input-field col s7">
+
+               <input type="checkbox" id="test1"
+                      ng-model="$ctrl.search.type1"
+                      ng-false-value="''"
+                      ng-true-value="'tratamientos'"/>
+               <label for="test1" class="mr-20">Tratamientos</label>
+
+               <input type="checkbox" id="test2"
+                      ng-model="$ctrl.search.type2"
+                      ng-false-value="''"
+                      ng-true-value="'depilacion'"/>
+               <label for="test2" class="mr-20">Depilación</label>
+
+               <input type="checkbox" id="test3"
+                      ng-model="$ctrl.search.type3"
+                      ng-false-value="''"
+                      ng-true-value="'facial'"/>
+               <label for="test3" class="mr-20">Facial</label>
+
+               <input type="checkbox" id="test4"
+                      ng-model="$ctrl.search.type4"
+                      ng-false-value="''"
+                      ng-true-value="'corporal'"/>
+               <label for="test4">Corporal</label>
+
+          </div>
+
     </div>
+    <service-item data="$ctrl.services" on-say-hello="$ctrl.sayHello($event)" search="$ctrl.search"></service-item>
 
-
-    <ul class="collection">
-
-        <service-item ng-repeat="service in $ctrl.services | filter:$ctrl.search"
-                    data="service"
-                    on-say-hello="$ctrl.sayHello($event);">
-        </service-item>
-
-    </ul>
-
-    <a class="btn-floating btn-large waves-effect waves-light red" ng-click="$ctrl.createService()"><i class="material-icons">add</i></a>
+    <a class="btn-floating btn-large waves-effect waves-light pink accent-2" ng-click="$ctrl.createService()"><i class="material-icons">add</i></a>
   `
 }
+
+
+
+
+
