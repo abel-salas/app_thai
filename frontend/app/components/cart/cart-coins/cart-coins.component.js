@@ -18,28 +18,28 @@ export const CartCoinsComponent = {
 
                     <div class="row">
 
-                      <div class="input-field col s4">
-                        <input id="text" type="text" ng-model="$ctrl.currency.coin.dime">
-                        <label for="coin" ng-class="$ctrl.ifEmpty($ctrl.currency.coin.dime)">0.10€</label>
+                      <div class="input-field col s2">
+                        <input id="text" type="text" ng-model="$ctrl.currency.coins.dime" ng-blur="$ctrl.toAddNumber()">
+                        <label for="coin" ng-class="$ctrl.ifEmpty($ctrl.currency.coins.dime)">0.10€</label>
                       </div>
 
-                      <div class="input-field col s4">
-                        <input id="text" type="text" class="validate" ng-model="$ctrl.currency.coins.quarter">
+                      <div class="input-field col s2">
+                        <input id="text" type="text" ng-model="$ctrl.currency.coins.quarter" ng-blur="$ctrl.toAddNumber()">
                         <label for="coin" ng-class="$ctrl.ifEmpty($ctrl.currency.coins.quarter)">0.20€</label>
                       </div>
 
-                      <div class="input-field col s4">
-                        <input id="text" type="text" class="validate" ng-model="$ctrl.currency.coins.halfEuro">
+                      <div class="input-field col s2">
+                        <input id="text" type="text" ng-model="$ctrl.currency.coins.halfEuro" ng-blur="$ctrl.toAddNumber()">
                         <label for="coin" ng-class="$ctrl.ifEmpty($ctrl.currency.coins.halfEuro)">0.50€</label>
                       </div>
 
-                      <div class="input-field col s4">
-                        <input id="text" type="text" class="validate" ng-model="$ctrl.currency.coins.oneEuro">
+                      <div class="input-field col s2">
+                        <input id="text" type="text" ng-model="$ctrl.currency.coins.oneEuro" ng-blur="$ctrl.toAddNumber()">
                         <label for="coin" ng-class="$ctrl.ifEmpty($ctrl.currency.coins.oneEuro)">1€</label>
                       </div>
 
-                      <div class="input-field col s4">
-                        <input id="text" type="text" class="validate" ng-model="$ctrl.currency.coins.twoEuro">
+                      <div class="input-field col s2">
+                        <input id="text" type="text" ng-model="$ctrl.currency.coins.twoEuro" ng-blur="$ctrl.toAddNumber()">
                         <label for="email" ng-class="$ctrl.ifEmpty($ctrl.currency.coins.twoEuro)">2€</label>
                       </div>
 
@@ -56,28 +56,28 @@ export const CartCoinsComponent = {
                     <span class="card-title">Billetes</span>
 
                     <div class="row">
-                        <div class="input-field col s4">
-                            <input id="text" type="text" ng-model="$ctrl.currency.dollars.five">
+                        <div class="input-field col s2">
+                            <input id="text" type="text" ng-model="$ctrl.currency.dollars.five" ng-blur="$ctrl.toAddNumber()">
                             <label for="coin" ng-class="$ctrl.ifEmpty($ctrl.currency.dollars.five)">5€</label>
                         </div>
 
-                        <div class="input-field col s4">
-                            <input id="text" type="text" ng-model="$ctrl.currency.dollars.ten">
+                        <div class="input-field col s2">
+                            <input id="text" type="text" ng-model="$ctrl.currency.dollars.ten" ng-blur="$ctrl.toAddNumber()">
                             <label for="coin" ng-class="$ctrl.ifEmpty($ctrl.currency.dollars.ten)">10€</label>
                         </div>
 
-                        <div class="input-field col s4">
-                            <input id="text" type="text" ng-model="$ctrl.currency.dollars.twenty">
+                        <div class="input-field col s2">
+                            <input id="text" type="text" ng-model="$ctrl.currency.dollars.twenty" ng-blur="$ctrl.toAddNumber()">
                             <label for="coin" ng-class="$ctrl.ifEmpty($ctrl.currency.dollars.twenty)">20€</label>
                         </div>
 
-                        <div class="input-field col s4">
-                            <input id="text" type="text" ng-model="$ctrl.currency.dollars.fifty">
+                        <div class="input-field col s2">
+                            <input id="text" type="text" ng-model="$ctrl.currency.dollars.fifty" ng-blur="$ctrl.toAddNumber()">
                             <label for="coin" ng-class="$ctrl.ifEmpty($ctrl.currency.dollars.fifty)">50€</label>
                         </div>
 
-                        <div class="input-field col s4">
-                            <input id="text" type="text" ng-model="$ctrl.currency.dollars.hundred">
+                        <div class="input-field col s2">
+                            <input id="text" type="text" ng-model="$ctrl.currency.dollars.hundred" ng-blur="$ctrl.toAddNumber()">
                             <label for="coin" ng-class="$ctrl.ifEmpty($ctrl.currency.dollars.hundred)">100€</label>
                         </div>
 

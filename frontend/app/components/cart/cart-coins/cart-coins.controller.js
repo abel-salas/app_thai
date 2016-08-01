@@ -6,27 +6,35 @@
 
 
 class CartCoinsController {
-  constructor (ProductService, $scope, $state) {
+    constructor(CartService, CoinsService) {
+        this.CartService = CartService;
+        this.CoinsService = CoinsService;
+    }
 
-  }
+    submitForm(product) {
 
-  submitForm(product){
+    }
 
-  }
+    ifEmpty(value) {
+        switch (value !== '' && value !== undefined) {
+            case true:
+                return 'active';
+        }
+    }
 
-  ifEmpty(value) {
-      switch (value !== '' && value !== undefined){
-          case true: return 'active';
-      }
-  }
+    toAddNumber() {
 
-  toAddNumber() {
-      let coins = this.currency.coin;
-      this.totalCoins = coins.dime + coins.quarter + coins.halfEuro + coins.oneEuro + coins.twoEuro;
+        console.log('aaaaaaaaaaaaa',this.currency);
 
-      let dollars =
-      this.totalDollars = dollars.five + dollars.ten + dollars.twenty + dollars.fifty + dollars.hundred;
-  }
+        /*this.CoinsService.addCoinsTotal(this.currency.coins);
+        this.CoinsService.addDollarsTotal(this.currency.dollars);*/
+
+        // coins = this.currency.coin;
+        // this.totalCoins = coins.dime + coins.quarter + coins.halfEuro + coins.oneEuro + coins.twoEuro;
+        //
+        // let dollars =
+        //     this.totalDollars = dollars.five + dollars.ten + dollars.twenty + dollars.fifty + dollars.hundred;
+    }
 
 }
 
