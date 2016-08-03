@@ -6,13 +6,19 @@ var mongoose = require('mongoose');
  */
 
 var cart = mongoose.Schema({
-  name: String,
-  type: String,
-  price: Number,
-  brand: String,
-  description: String,
-  stock: Number,
+  openCurrency: Number,
+  closeCurrency: Number,
+  resultCart: Number,
+  random: Number, // B
   created: Date,
-  modified: Date
+  closed: Date,
+  status: Boolean,
+  summary: {
+    card: Number,
+    dollars: Number
+  },
+  totalCart: Number,
+  restCart: Number
 });
+
 module.exports = mongoose.model('Cart', cart);

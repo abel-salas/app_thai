@@ -1,115 +1,40 @@
-var Cart = require("../model/model-cart.js");
+const Cart = require("../model/model-cart.js");
+const common = require("../common/response.decorator.js");
 
 
-exports.getAllcarts = function(req, res) {
-  console.log('__________ get all carts __________');
+exports.createCart = (req, res) => {
+    console.log('_________ Post create cart ________');
 
-  Cart.find({}, function (err, cart) {
-
-    if (err) {
-      return res.status(400).json({
-        status: 400,
-        content: {
-            message: err.toString()
-        }
-      });
-    }
-
-    res.status(res.statusCode).json({
-      status: res.statusCode,
-      content: {
-        message: 'too coorrecto',
-        data: cart
-      }
+    var cart = new Cart({
+        status: 'true',
+        openCurrency: req.body.openCurrency,
+        created: new Date()
     });
 
-  });
+    cart.save((err, response) => common.responseDecorator(err, res, response, 'Cart Create'))
 
 };
 
 
-exports.addcart = function(req, res) {
-  console.log('______________ Post add cart ______________');
+exports.closeCart = (req, res) => {
+    console.log('________ Post close cart ________', req.params.id);
 
-  var cart = new cart({
-    "name": req.body.name,
-    "type": req.body.type,
-    "price": req.body.price,
-    "brand": req.body.brand,
-    "stock": req.body.stock,
-    "description": req.body.description,
-    "created": new Date()
-  });
+    Cart.findById(req.params.id, (err, cart) => {
 
-  Cart.save(function(err, response){
-    if (!err) {
-      res.send({
-        status: response.statusCode,
-        content: {
-          message: 'cart saved',
-          data: response
-        }
-      });
-    } else {
-      console.log('ERROR: ' + err);
-      res.send('ERROR - Post add cart');
-    }
-  })
+        cart.status = 'false';
+        cart.closeCurrency = req.body.closeCurrency;
+        cart.random = req.body.random;
+        cart.closed = new Date();
+        cart.summary = req.body.summary;
 
-};
+        cart.totalCart = (cart.random + cart.closeCurrency) - cart.openCurrency;
+        cart.restCart = cart.totalCart - cart.summary.dollars;
 
+        console.log('=========> ',cart,'=========> ',(cart.random + cart.closeCurrency) - cart.openCurrency);
 
-exports.updatecart = function(req, res){
-  console.log('UPDATE cart', req.body);
+            common.responseDecorator(err, res, cart, 'Cart Close');
 
-  Cart.findById(req.params.id, function (err, cart) {
-      cart.name = req.body.name;
-      cart.type = req.body.type;
-      cart.price = req.body.price;
-      cart.brand = req.body.brand;
-      cart.stock = req.body.stock;
-      cart.description = req.body.description;
-      cart.modified = new Date();
-
-    cart.save(function(err, response){
-      if (!err) {
-        res.send({
-          status: response.statusCode,
-          content: {
-            message: 'cart saved',
-            data: response
-          }
-        });
-      } else {
-        console.log('ERROR: ' + err);
-        res.send('ERROR - Update cart');
-      }
     });
-
-  });
-};
-
-
-exports.deletecart = function(req, res) {
-  console.log('DELETE cart');
-
-  Cart.findById(req.params.id, function (err, cart) {
-    cart.remove(function(err, response){
-      if (!err) {
-        res.send({
-          status: response.statusCode,
-          content: {
-            message: 'SUCCESS - remove cart',
-            data: response
-          }
-        });
-      } else {
-        console.log('ERROR: ' + err);
-        res.send('ERROR - remove cart');
-      }
-    });
-
-  });
 
 };
 

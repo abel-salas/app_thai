@@ -4,32 +4,12 @@ var controller = require("../controller/controller-cart.js");
 
 module.exports = function(app, request) {
 
-  /*
-   * GET cartS
-   */
+  /* POST create cart */
+  app.post('/cart/create/', controller.createCart);
 
-  app.get('/cart/', controller.getAllcarts);
+  /* POST close cart */
+  app.post('/cart/close/:id', controller.closeCart);
 
-
-  /*
-   *  cart POST
-   */
-
-  app.post('/cart/', controller.addcart);
-
-
-  /*
-   *  cart UPDATE
-   */
-
-  app.put('/cart/:id', controller.updatecart);
-
-
-  /*
-   *  cart DELETE
-   */
-
-  app.delete('/cart/:id', controller.deletecart);
 
 
 }
