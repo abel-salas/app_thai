@@ -3,7 +3,7 @@ import controller from './cart-list.controller.js'
 export const CartListComponent = {
     controller,
     template: `
-        <cart-close is-close="$ctrl.cartIsOpen"></cart-close>
+        <cart-close is-close="$ctrl.cartIsOpen" on-say-hello="$ctrl.sayHello($event);"></cart-close>
 
         <div class="card indigo" ng-if="!$ctrl.cartIsOpen">
 

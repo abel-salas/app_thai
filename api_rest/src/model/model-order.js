@@ -6,7 +6,15 @@ var mongoose = require('mongoose');
  */
 
 var order = mongoose.Schema({
-
+    userId: String,
+    cartId: String,
+    active: Boolean,
+    orderline: Array,
+    currency: {
+        coins: Number, // B
+        card: Number,
+        dollars: Number
+    },
     created: Date
 });
 

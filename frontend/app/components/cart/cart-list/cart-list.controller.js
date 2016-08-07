@@ -5,20 +5,50 @@
  */
 
 class CartListController {
-    constructor() {
-        this.message = 'Hi ngErs!';
+    constructor(CartService, $log) {
+        this.CartService = CartService;
+        this.$log = $log;
 
-        this.cartIsOpen = true;
 
         this.user = {};
         this.user.name = "Abel Salas";
         this.user.orderId = "34582313";
 
-        this.cart = "10/06/2016";
+        this.getCart();
     }
 
-    sayHello(user) {
-        console.log('Output User', user)
+    getCart(){
+        this.CartService.getCart()
+            .then(res => {
+                this.cartIsOpen = false;
+                this.cart = res.created;
+            })
+            .catch(err => {
+                this.cartIsOpen = true;
+            })
+    }
+
+    sayHello(currency) {
+        var openCurrency = {
+            coins: currency.coins,
+            dollars: currency.dollars,
+            total: currency.total
+        }
+        this.CartService.createCart(currency)
+            .then(res => {
+                this.$log.debug('Carrito creado correctamente',res);
+                this.cart = res.created;
+                Materialize.toast( 'El carrito se ha creado correctamente! caja : ' + res.openCurrency + '€', 3000)
+                this.toggleStateCart();
+            })
+            .catch(err => {
+                this.$log.debug('Error al crear el carrito',err)
+            })
+    }
+
+    toggleStateCart(){
+        this.$log.debug('toggleStateCart')
+        this.cartIsOpen = !this.cartIsOpen;
     }
 
 }

@@ -1,28 +1,66 @@
 const Order = require("../model/model-order.js");
 const common = require("../common/response.decorator.js");
-const cartService = require("../common/cart.service.js");
 
 
 exports.createOrder = (req, res) => {
     console.log('_________ Post create Order ________');
 
-    cartService.validateCart(req.body.cartId)
-        .then(() => {
+    Order.find({active: 'true'}, function (err, order) {
+
+        console.log(err, order)
+
+        if (order.length > 0) {
+            common.responseDecorator(err, res, order, 'Order user exist return old orderUser')
+        } else {
 
             var order = new Order({
                 cartId: req.body.cartId,
-                userId: req.body.userId
+                userId: req.body.userId,
+                orderlines: req.body.orderlines,
+                currency: req.body.currency,
+                active: 'true',
+                create: new Date()
             });
 
-            order.save((err, response) => common.responseDecorator(err, res, req.body, 'Order Create'))
+            order.save((err, response) => common.responseDecorator(err, res, response, 'Order Create'))
+        }
 
-        })
-        .catch(() => {
+    })
 
-            res.status(400)
-            res.send("Cart doesn't exist or is closed")
+};
 
-        })
+exports.getOrderByCartId = (req, res) => {
+    console.log('_________ get getOrderByCartId  ________');
+
+    Order.find({cartId: req.params.cartId}, function (err, order) {
+
+        if (order.length >= 0) {
+            common.responseDecorator(err, res, order, 'Return all order by cart')
+        } else {
+            common.responseDecorator(err, res, order, 'Cart doesn t orders')
+        }
+
+    })
+
+};
+
+exports.postCloseOrder = (req, res) => {
+    console.log('_________ Post close Order ________', req.params.cartId);
+
+    Order.findById(req.body.orderId, function (err, order) {
+
+        console.log(err, order)
+
+        if (order == 'undefined') {
+            common.responseDecorator(err, res, order, 'Order doesn t exist')
+        } else {
+
+            order.active = 'false';
+            order.save((err, response) => common.responseDecorator(err, res, response, 'Order Closed'))
+
+        }
+
+    })
 
 };
 

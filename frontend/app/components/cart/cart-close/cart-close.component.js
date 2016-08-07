@@ -23,14 +23,33 @@ export const CartCloseComponent = {
                      <i class="material-icons left ml-20">lock</i>
                      <span>La caja esta cerrada.</span>
 
-                     <ul class="right hide-on-med-and-down" ng-click="$ctrl.openCreateCart()">
+                     <ul class="right hide-on-med-and-down" ng-click="$ctrl.toggleCart()">
                           <li><a><i class="material-icons">vpn_key</i></a></li>
                      </ul>
                 </div>
             </nav>
 
-            <cart-coins create-cart="$ctrl.createCart"></cart-coins>
+            <div ng-if="$ctrl.createCart">
 
+                <cart-coins on-say-hello="$ctrl.sayHello($event);"></cart-coins>
+
+                <div class="card-content">
+                    <span class="card-title">
+                      <ul class="collection with-header">
+                        <li class="collection-item">
+                        TOTAL
+                            <span class="secondary-content">{{$ctrl.currency.total}}€</span>
+                        </li>
+                      </ul>
+                    </span>
+                </div>
+
+                <div class="card-action">
+                    <a href="#" type="reset" ng-click="$ctrl.cancelCart()">Cancelar</a>
+                    <a href="#" ng-click="$ctrl.confirmCart()">Confirmar</a>
+                </div>
+
+            </div>
 
         </div>
     `

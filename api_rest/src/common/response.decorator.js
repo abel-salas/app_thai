@@ -1,11 +1,13 @@
 
 
 exports.responseDecorator = (err, res, data, name) => {
-    console.log('_________ callbackResponse ________');
+    console.log('_________ response Decorator ________');
 
     if (err) {
         return res.status(res.statusCode).json({
-            message: err.toString()
+            message: err.toString(),
+            name: name,
+            data: data
         });
     }
 
