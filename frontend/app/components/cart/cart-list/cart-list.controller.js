@@ -1,30 +1,26 @@
-/**
- * components/speaker/spekaer-list/speaker-list.controller.js
- *
- * Controller for <user-list> component
- */
 
 class CartListController {
-    constructor(CartService, $log) {
+    constructor(CartService, $log, OrderService) {
         this.CartService = CartService;
+        this.OrderService = OrderService;
         this.$log = $log;
 
-
-        this.user = {};
-        this.user.name = "Abel Salas";
-        this.user.orderId = "34582313";
-
         this.getCart();
+        this.cart = Object;
+        this.callCartType = String;
     }
 
     getCart(){
         this.CartService.getCart()
             .then(res => {
-                this.cartIsOpen = false;
-                this.cart = res.created;
+                this.cartIsOpen = true;
+                this.callCartType = 'created';
+                this.cart = res;
+                this.OrderService.sendIdCart(this.cart._id);
             })
             .catch(err => {
-                this.cartIsOpen = true;
+                this.callCartType = 'closed';
+                this.cartIsOpen = false;
             })
     }
 
@@ -34,20 +30,43 @@ class CartListController {
             dollars: currency.dollars,
             total: currency.total
         }
-        this.CartService.createCart(currency)
-            .then(res => {
-                this.$log.debug('Carrito creado correctamente',res);
-                this.cart = res.created;
-                Materialize.toast( 'El carrito se ha creado correctamente! caja : ' + res.openCurrency + '€', 3000)
-                this.toggleStateCart();
-            })
-            .catch(err => {
-                this.$log.debug('Error al crear el carrito',err)
-            })
+
+        switch(this.callCartType){
+
+            case 'created':
+                this.CartService.closeCart(this.cart._id, currency)
+                    .then(res => {
+                        this.cart = undefined;
+                        this.cartIsOpen = false;
+                        this.callCartType = 'closed';
+                        Materialize.toast( 'El carrito se ha cerrado correctamente! </br> La caja tiene: ' + res.closeCurrency.total + '€', 5000);
+                    })
+                    .catch(err => {
+                        this.$log.debug('Error al cerrar el carrito',err)
+                    })
+                break;
+
+            case 'closed':
+                this.CartService.createCart(currency)
+                    .then(res => {
+                        this.cart = res;
+                        this.cartIsOpen = true;
+                        this.callCartType = 'created';
+                        Materialize.toast( 'El carrito se ha creado correctamente! </br> La caja tiene:' + res.currency.total + '€', 5000);
+                    })
+                    .catch(err => {
+                        this.$log.debug('Error al crear el carrito',err)
+                    })
+                break;
+        }
+
     }
 
     toggleStateCart(){
-        this.$log.debug('toggleStateCart')
+        this.cartIsOpen = !this.cartIsOpen;
+    }
+
+    closeCart(){
         this.cartIsOpen = !this.cartIsOpen;
     }
 

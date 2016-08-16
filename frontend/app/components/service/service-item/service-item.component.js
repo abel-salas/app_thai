@@ -30,9 +30,9 @@ export const ServiceItemComponent = {
                   <span class="card-title">{{service.type}}</span>
                 </div>
 
-                <a class="btn-floating btn-large waves-effect waves-light indigo right btn_price">
+                <button href="#" ng-click="$ctrl.onClick(service)" class="btn-floating btn-large waves-effect waves-light indigo right btn_price">
                   {{service.price}}€
-                </a>
+                </button>
 
                 <div class="card-content activator">
                   <i class="material-icons left">more_vert</i></a>

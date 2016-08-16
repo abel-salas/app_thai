@@ -1,21 +1,13 @@
-/**
- * components/speaker/speaker-item/speaker-item.controller.js
- *
- * Controller for <user-item> component
- */
-
 class UserItemController {
-    constructor($log) {
-        this.$log = $log;
+    constructor() {
     }
 
     onClick(value) {
-        this.$log.log('aqui saludamos', value);
-        this.onSayHello(value)
+        this.onSayHello({
+            $event: value
+        });
     }
 
-    goToDetailService() {
-    }
 }
 
 export default UserItemController

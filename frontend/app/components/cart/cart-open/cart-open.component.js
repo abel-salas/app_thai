@@ -1,17 +1,12 @@
-/**
- * components/speaker/speaker-item/speaker-item.component.js
- *
- * Stateful Component that defines a item in a speakers list.
- * Stateful: - Fetches state, essentially communicating to a backend API through a service
- *           - In this example, the data is fetched in resolve routes and injected in 'data' property binding.
- */
 
-import controller from './cart-close.controller.js'
+import controller from './cart-open.controller.js'
 
-export const CartCloseComponent = {
+export const CartOpenComponent = {
     bindings: {
+        action: '<',
         isClose: '<',
-        onSayHello: '&'
+        onSayHello: '&',
+        return: '&'
     },
     controller,
     template: `
@@ -20,8 +15,13 @@ export const CartCloseComponent = {
             <nav class="indigo lighten-1">
                 <div class="nav-wrapper">
 
-                     <i class="material-icons left ml-20">lock</i>
-                     <span>La caja esta cerrada.</span>
+                     <ul class="left hide-on-med-and-down" ng-click="$ctrl.return($event);" ng-if="($ctrl.action == 'created')">
+                          <li><a><i class="material-icons">skip_previous</i></a></li>
+                     </ul>
+                     <span ng-if="($ctrl.action == 'created')">Vamos a cerrar la caja!</span>
+
+                     <i class="material-icons left ml-20" ng-if="($ctrl.action == 'closed')">lock</i>
+                     <span ng-if="($ctrl.action == 'closed')">Vamos a abrir la caja!</span>
 
                      <ul class="right hide-on-med-and-down" ng-click="$ctrl.toggleCart()">
                           <li><a><i class="material-icons">vpn_key</i></a></li>

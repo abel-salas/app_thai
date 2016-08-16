@@ -1,8 +1,3 @@
-/**
- * components/speaker/speaker.service.js
- *
- * Service to fetch data from Speakers API
- */
 const IP_API = 'http://127.0.0.1';
 const PORT = ':8082';
 
@@ -16,10 +11,7 @@ export default class ServiceService {
     getServices() {
         var deferred = this.$q.defer();
         this.$http.get(IP_API + PORT + '/services/')
-            .then(response => {
-                this.$log.debug('Services ', response)
-                deferred.resolve(response.data.data)
-            })
+            .then(response => deferred.resolve(response.data.data))
             .catch(error => deferred.reject(error));
         return deferred.promise;
     }
@@ -27,10 +19,7 @@ export default class ServiceService {
     getService(id) {
         var deferred = this.$q.defer();
         this.$http.get(IP_API + PORT + '/service/' + id)
-            .then(response => {
-                this.$log.debug('Service', response);
-                deferred.resolve(response.data.data)
-            })
+            .then(response => deferred.resolve(response.data.data))
             .catch(error => deferred.reject(error))
         return deferred.promise;
     }

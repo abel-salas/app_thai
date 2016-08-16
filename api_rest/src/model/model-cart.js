@@ -6,15 +6,12 @@ var mongoose = require('mongoose');
  */
 
 var cart = mongoose.Schema({
-  openCurrency: Number,
-  closeCurrency: Number,
+  totalCart: Number,
+  closeCurrency: Object,
   created: Date,
   closed: Date,
   active: Boolean,
-  currency: {
-    card: Number,
-    dollars: Number
-  },
+  currency: Object,
   result: Number
 });
 

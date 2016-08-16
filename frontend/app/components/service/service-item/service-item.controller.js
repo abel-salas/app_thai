@@ -1,22 +1,13 @@
-/**
- * components/speaker/speaker-item/speaker-item.controller.js
- *
- * Controller for <service-item> component
- */
-
 class ServiceItemController {
     constructor() {
     }
 
-    onClick() {
+    onClick(value) {
         this.onSayHello({
-
-            $event: {
-                userName: this.data.name
-            }
-
-        })
+            $event: value
+        });
     }
+
 }
 
 export default ServiceItemController

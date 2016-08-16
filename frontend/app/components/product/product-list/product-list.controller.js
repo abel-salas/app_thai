@@ -1,22 +1,16 @@
-/**
- * components/speaker/spekaer-list/speaker-list.controller.js
- *
- * Controller for <product-list> component
- */
-
 class ProductListController {
-  constructor ($state) {
-    this.$state = $state
-    this.message = 'Hi ngErs!'
-  }
+    constructor($state, OrderService) {
+        this.OrderService = OrderService;
+        this.$state = $state;
+    }
 
-  sayHello ({ userName }) {
-    window.alert(`Hello ${userName}!`)
-  }
+    sayHello(value) {
+        this.OrderService.sendProductOrderline(value);
+    }
 
-  createProduct() {
-    this.$state.go('index.createProduct')
-  }
+    createProduct() {
+        this.$state.go('index.createProduct')
+    }
 
 }
 

@@ -1,14 +1,12 @@
-
 class ProductItemController {
-  constructor () {}
+    constructor() {
+    }
 
-  onClick () {
-    this.onSayHello({
-      $event: {
-        userName: this.data.name
-      }
-    })
-  }
+    onClick(value) {
+        this.onSayHello({
+            $event: value
+        })
+    }
 }
 
 export default ProductItemController

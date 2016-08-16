@@ -33,12 +33,12 @@ export default class CartService {
         return deferred.promise;
     };
 
-    closeCart(cart) {
+    closeCart(id, currency) {
         var deferred = this.$q.defer();
-        this.$http.post(IP_API + PORT + '/cart/close/' + cart._id, cart)
+        this.$http.post(IP_API + PORT + '/cart/close/' + id, currency)
             .then(res => {
                 this.$log.debug('Close Cart ', res)
-                deferred.resolve(res.data)
+                deferred.resolve(res.data.data)
             })
             .catch(error => deferred.reject(error));
         return deferred.promise;

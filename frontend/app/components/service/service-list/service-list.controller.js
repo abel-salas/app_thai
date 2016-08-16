@@ -1,22 +1,17 @@
-/**
- * components/speaker/spekaer-list/speaker-list.controller.js
- *
- * Controller for <service-list> component
- */
-
 class ServiceListController {
 
-  constructor ($state) {
-    this.$state = $state
-  }
+    constructor($state, OrderService) {
+        this.$state = $state;
+        this.OrderService = OrderService;
+    }
 
-  sayHello ({ userName }) {
-    window.alert(`Hello ${userName}!`)
-  }
+    sayHello(value) {
+        this.OrderService.sendServiceOrderline(value);
+    }
 
-  createService() {
-    this.$state.go('index.createService')
-  }
+    createService() {
+        this.$state.go('index.createService')
+    }
 
 }
 

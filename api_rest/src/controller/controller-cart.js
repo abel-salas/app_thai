@@ -12,11 +12,11 @@ exports.createCart = (req, res) => {
 
             var cart = new Cart({
                 active: 'true',
-                openCurrency: {
+                currency: {
                     coins: req.body.coins,
                     dollars: req.body.dollars,
                     total: req.body.total
-                }.body.openCurrency,
+                },
                 created: new Date()
             });
 
@@ -37,17 +37,14 @@ exports.getCart = (req, res) => {
 };
 
 exports.closeCart = (req, res) => {
-    console.log('________ Post close cart ________', req.params.id);
+    console.log('________ Post close cart ________');
 
-    Cart.findById(req.params.id, (err, cart) => {
-
+    Cart.findById(req.params.id, function (err, cart) {
         cart.active = 'false';
-        cart.closeCurrency = req.body.closeCurrency;
+        cart.closeCurrency = req.body;
         cart.closed = new Date();
-        cart.currency = req.body.currency;
-
-        cart.totalCart = (cart.random + cart.closeCurrency) - cart.openCurrency;
-        cart.restCart = cart.totalCart - cart.summary.dollars;
+        console.log(cart);
+        cart.totalCart = cart.closeCurrency.total - cart.currency.total;
 
         cart.save((err, response) => common.responseDecorator(err, res, cart, 'Cart Close'))
 

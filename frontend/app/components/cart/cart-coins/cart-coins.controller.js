@@ -1,9 +1,3 @@
-/**
- * components/speaker/spekaer-list/speaker-list.controller.js
- *
- * Controller for <user-list> component
- */
-
 
 class CartCoinsController {
     constructor(CoinsService, $log, CartService) {
