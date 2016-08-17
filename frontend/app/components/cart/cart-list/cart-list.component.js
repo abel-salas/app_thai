@@ -11,8 +11,7 @@ export const CartListComponent = {
 
         <cart-order
                     cart="$ctrl.cart"
-                    is-close="$ctrl.cartIsOpen"
-                    on-say-hello="$ctrl.closeCart($event);">
+                    is-close="$ctrl.cartIsOpen">
         </cart-order>
     `
 }

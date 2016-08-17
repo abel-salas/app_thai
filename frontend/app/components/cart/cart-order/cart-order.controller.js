@@ -1,30 +1,26 @@
-
 class CartOrderComponent {
-  constructor ($log,OrderService) {
-      this.OrderService = OrderService;
-      this.createCart = false;
-      this.$log = $log;
-  }
+    constructor($log, OrderService) {
+        this.OrderService = OrderService;
+        this.createCart = false;
+        this.$log = $log;
+    }
 
-  removeServiceOrderline(value){
-    this.OrderService.removeServiceOrderline(value);
-  }
+    removeServiceOrderline(value) {
+        this.OrderService.removeServiceOrderline(value);
+    }
 
-  removeProductOrderline(value){
-    this.OrderService.removeProductOrderline(value);
-  }
+    removeProductOrderline(value) {
+        this.OrderService.removeProductOrderline(value);
+    }
 
-  confirmCart() {
-    this.$log.debug('Confirm Cart ======> ', this.currency.total)
+    confirmOrder() {
+        this.$log.log('Confirm Order ===> ', this.payment);
+        this.OrderService.createOrder(this.payment);
+    }
 
-    this.onSayHello({
-      $event: this.currency
-    });
-  }
-
-  cancelOrder() {
-    this.OrderService.OnInit();
-  }
+    cancelOrder() {
+        this.OrderService.OnInit();
+    }
 }
 
 export default CartOrderComponent

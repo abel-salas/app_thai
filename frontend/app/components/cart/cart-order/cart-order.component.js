@@ -3,8 +3,7 @@ import controller from './cart-order.controller.js'
 export const CartOrderComponent = {
     bindings: {
         cart: '<',
-        isClose: '<',
-        onSayHello: '&'
+        isClose: '<'
     },
     controller,
     template: `
@@ -18,7 +17,7 @@ export const CartOrderComponent = {
 
                     <ul class="right hide-on-med-and-down">
                         <li>
-                            <a href="#!" ng-click="$ctrl.onSayHello($event);">
+                            <a href="" ng-click="$ctrl.onSayHello($event);">
                                 <i class="material-icons">more_vert</i>
                             </a>
                         </li>
@@ -41,7 +40,7 @@ export const CartOrderComponent = {
                             <li class="collection-item">
                                 {{$ctrl.OrderService.user.name}}
                                 {{$ctrl.OrderService.user.lastName}}
-                                <a href="#!" class="secondary-content">
+                                <a href="" class="secondary-content">
                                 <i class="material-icons indigoL1_color">assignment_ind</i></a>
                             </li>
                         </ul>
@@ -55,7 +54,7 @@ export const CartOrderComponent = {
                             <div>
                                 <span>{{orderline.price}}€ </span>
                                 {{orderline.name}}
-                                <a ng-click="$ctrl.removeServiceOrderline($index)" href="#!" class="secondary-content"><i class="material-icons pink_color">delete</i></a>
+                                <a ng-click="$ctrl.removeServiceOrderline($index)" href="" class="secondary-content"><i class="material-icons pink_color">delete</i></a>
                             </div>
                         </li>
                     </ul>
@@ -68,27 +67,46 @@ export const CartOrderComponent = {
                             <div>
                                 <span>{{orderline.price}}€ </span>
                                 {{orderline.name}}
-                                <a ng-click="$ctrl.removeProductOrderline($index)" href="#!" class="secondary-content"><i class="material-icons pink_color">delete</i></a>
+                                <a ng-click="$ctrl.removeProductOrderline($index)" href="" class="secondary-content"><i class="material-icons pink_color">delete</i></a>
                             </div>
                         </li>
                     </ul>
                 </div>
 
-
                 <div class="card-content">
                     <span class="card-title">
                         <ul class="collection with-header">
+                            <li class="input-field collection-item pb-40">
+                                <input type="checkbox" id="pay1"
+                                       ng-model="$ctrl.payment.type1"
+                                       ng-false-value="''"
+                                       ng-true-value="'Tarjeta'"/>
+                                <label for="pay1" class="mr-20">Tarjeta</label>
+
+                                <input type="checkbox" id="pay2"
+                                       ng-model="$ctrl.payment.type2"
+                                       ng-false-value="''"
+                                       ng-true-value="'Efectivo'"/>
+                                <label for="pay2" class="mr-20">Efectivo</label>
+
+                                <input type="checkbox" id="pay3"
+                                       ng-model="$ctrl.payment.type3"
+                                       ng-false-value="''"
+                                       ng-true-value="'Mixto'"/>
+                                <label for="pay3" class="mr-20">Mixto</label>
+                            </li>
+
                             <li class="collection-item">
                                 TOTAL
-                                <span class="secondary-content">{{}}€</span>
+                                <span class="secondary-content">{{$ctrl.OrderService.totalOrder}}€</span>
                             </li>
                         </ul>
                     </span>
                 </div>
 
                 <div class="card-action">
-                    <a ng-href="#" ng-click="$ctrl.cancelOrder()">Cancelar recibo</a>
-                    <a href="#">Confirmar recibo</a>
+                    <a href="" ng-click="$ctrl.cancelOrder()">Cancelar recibo</a>
+                    <a href="" ng-click="$ctrl.confirmOrder()">Confirmar recibo</a>
                 </div>
             </div>
         </div>

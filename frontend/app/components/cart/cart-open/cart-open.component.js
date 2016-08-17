@@ -45,8 +45,8 @@ export const CartOpenComponent = {
                 </div>
 
                 <div class="card-action">
-                    <a href="#" type="reset" ng-click="$ctrl.cancelCart()">Cancelar</a>
-                    <a href="#" ng-click="$ctrl.confirmCart()">Confirmar</a>
+                    <a href="" type="reset" ng-click="$ctrl.cancelCart()">Cancelar</a>
+                    <a href="" ng-click="$ctrl.confirmCart()">Confirmar</a>
                 </div>
 
             </div>

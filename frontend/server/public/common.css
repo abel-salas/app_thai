@@ -2,6 +2,9 @@
 .pd-10{
     padding-bottom: 10px;
 }
+.pb-40{
+    padding-bottom: 40px!important;
+}
 /* margin bottom*/
 .ml-10{
     margin-left: 10px;

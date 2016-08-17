@@ -10,8 +10,7 @@ export default class OrderService {
         this.OnInit();
     }
 
-    OnInit(){
-        this.cartId = undefined;
+    OnInit() {
         this.user = undefined;
         this.orderlines = {
             services: [],
@@ -20,41 +19,33 @@ export default class OrderService {
         this.totalOrder = 0;
     }
 
-    createOrder(cart) {
-        var deferred = this.$q.defer();
+    createOrder(payment) {
+        this.$log.log('=> ', this.cartId && this.user && this.orderlines.services.length > 0 || this.orderlines.products.length > 0)
 
-        if (this.CartId && this.user && (this.orderlines.services.length > 0 || this.orderlines.products.length > 0)) {
+        if (payment &&
+            this.cartId &&
+            this.user &&
+            this.orderlines.services.length > 0 ||
+            this.orderlines.products.length > 0) {
 
             let order = {
                 cartId: this.cartId,
                 userId: this.user._id,
-                orderlines: obj.orderlines,
-                currency: obj.currency
+                orderlines: this.orderlines,
+                payment: payment,
+                totalOrder: this.totalOrder
             }
 
             this.$http.post(IP_API + PORT + '/order/create/', order)
                 .then(res => {
-                    this.$log.log('crear carrito', res);
-                    deferred.resolve(res.data.data)
+                    this.$log.log('Order Created success', res);
+                    Materialize.toast('Su orden a sido procesada correctamente!', 3000);
+                    this.OnInit();
                 })
-                .catch(error => deferred.reject(error));
+                .catch(error => Materialize.toast('Hemos tenido un error al procesar la orden!', 3000));
+        } else {
+            Materialize.toast('Falta algun campo por rellenar para enviar el recibo!', 3000);
         }
-
-        return deferred.promise;
-    };
-
-    getCart() {
-        var deferred = this.$q.defer();
-        this.$http.get(IP_API + PORT + '/cart/')
-            .then(res => {
-                if (res.data.data[0]) {
-                    deferred.resolve(res.data.data[0])
-                } else {
-                    deferred.reject()
-                }
-            })
-            .catch(error => deferred.reject(error));
-        return deferred.promise;
     };
 
     sendIdCart(id) {
@@ -68,26 +59,37 @@ export default class OrderService {
     sendProductOrderline(product) {
         if (this.cartId && this.user) {
             this.orderlines.products.push(product);
-        } else{
-            Materialize.toast( 'Primero debes seleccionar un Cliente!', 3000);
+            this.countTotalPriceOrder();
+        } else {
+            Materialize.toast('Primero debes seleccionar un Cliente!', 3000);
         }
     }
 
     sendServiceOrderline(service) {
         if (this.cartId && this.user) {
             this.orderlines.services.push(service);
-        } else{
-            Materialize.toast( 'Primero debes seleccionar un Cliente!', 3000);
+            this.countTotalPriceOrder();
+        } else {
+            Materialize.toast('Primero debes seleccionar un Cliente!', 3000);
         }
     }
 
     removeServiceOrderline(index) {
         this.orderlines.services.splice(index, 1);
+        this.countTotalPriceOrder();
     }
 
     removeProductOrderline(index) {
         this.orderlines.products.splice(index, 1);
+        this.countTotalPriceOrder();
     }
 
+    countTotalPriceOrder() {
+        let products = 0;
+        let services = 0;
+        this.orderlines.products.forEach(elem => services = services + elem.price);
+        this.orderlines.services.forEach(elem => products = products + elem.price);
+        this.totalOrder = products + services;
+    }
 
 }
