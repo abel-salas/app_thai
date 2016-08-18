@@ -1,15 +1,24 @@
 
 class CartCoinsController {
     constructor(CoinsService, $log, CartService) {
-        this.CoinsService = CoinsService;
         this.$log = $log;
         this.CartService = CartService;
+        this.totalCoins = 0;
+        this.totalDollars = 0;
     }
 
     ifEmpty(value) {
         switch (value !== '' && value !== undefined) {
             case true:
                 return 'active';
+        }
+    }
+
+    outputCurrency(){
+        if( this.totalCurrency >= 0 ) {
+            this.onSayHello({
+                $event: this.totalCurrency
+            });
         }
     }
 
@@ -21,12 +30,12 @@ class CartCoinsController {
         let oneEuroT = parseInt(this.currency.coins.oneEuro);
         let twoEuroT = parseInt(this.currency.coins.twoEuro) * 2;
 
-        this.totalCoins = dimeT + quarterT + halfEuroT + oneEuroT + twoEuroT;
-        this.currency.total = this.totalCoins + this.totalDollars;
+        let totalCoins = dimeT + quarterT + halfEuroT + oneEuroT + twoEuroT;
+        if( totalCoins > 0) this.totalCoins = totalCoins;
 
-        this.onSayHello({
-            $event: this.currency
-        });
+        this.totalCurrency = totalCoins + this.totalDollars;
+
+        this.outputCurrency();
     }
 
     toAddNumberDollars() {
@@ -36,12 +45,12 @@ class CartCoinsController {
         let fiftyT = parseInt(this.currency.dollars.fifty) * 50;
         let hundredT = parseInt(this.currency.dollars.hundred) * 100;
 
-        this.totalDollars = fiveT + tenT + twentyT + fiftyT + hundredT;
-        this.currency.total = this.totalCoins + this.totalDollars;
+        let totalDollars = fiveT + tenT + twentyT + fiftyT + hundredT;
+        if( totalDollars > 0) this.totalDollars = totalDollars;
 
-        this.onSayHello({
-            $event: this.currency
-        });
+        this.totalCurrency = this.totalCoins + totalDollars;
+
+        this.outputCurrency();
     }
 
 }

@@ -8,17 +8,17 @@ class CartOpenController {
         this.createCart = !this.createCart
     }
 
-    sayHello(currency) {
-        this.currency = currency
+    sayHello(totalCurrency) {
+        this.totalCurrency = totalCurrency
     }
 
     confirmCart() {
-        this.$log.debug('Confirm Cart ======> ', this.currency.total)
+        this.$log.debug('Confirm Cart ======> ', this.totalCurrency)
 
-        if(this.currency.total > 50){
+        if(this.totalCurrency > 50){
             this.toggleCart();
             this.onSayHello({
-                $event: this.currency
+                $event: this.totalCurrency
             });
         } else {
             Materialize.toast( 'Debes rellenar todos los campos!', 3000);

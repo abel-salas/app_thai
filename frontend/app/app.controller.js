@@ -1,6 +1,3 @@
-
-
-
 class AppController {
     constructor($window) {
         this.$window = $window

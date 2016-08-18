@@ -13,9 +13,17 @@ class CartOrderComponent {
         this.OrderService.removeProductOrderline(value);
     }
 
+    onCkickPayment(){
+        this.OrderService.sendPayment(this.payment);
+    }
+
     confirmOrder() {
-        this.$log.log('Confirm Order ===> ', this.payment);
-        this.OrderService.createOrder(this.payment);
+        if(this.payment){
+            this.OrderService.createOrder();
+            this.payment = undefined;
+        } else {
+            Materialize.toast( 'Tienes que elegir un metodo de pago!', 3000);
+        }
     }
 
     cancelOrder() {

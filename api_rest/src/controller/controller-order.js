@@ -5,27 +5,18 @@ const common = require("../common/response.decorator.js");
 exports.createOrder = (req, res) => {
     console.log('_________ Post create Order ________');
 
-    Order.find({active: 'true'}, function (err, order) {
+    console.log('req ',req.body);
+    var order = new Order({
+        cartId: req.body.cartId,
+        userId: req.body.userId,
+        orderlines: req.body.orderlines,
+        payment: req.body.payment,
+        totalOrder: req.body.totalOrder,
+        active: 'false',
+        created: new Date()
+    });
 
-        console.log(err, order)
-
-        if (order.length > 0) {
-            common.responseDecorator(err, res, order, 'Order user exist return old orderUser')
-        } else {
-
-            var order = new Order({
-                cartId: req.body.cartId,
-                userId: req.body.userId,
-                orderlines: req.body.orderlines,
-                currency: req.body.currency,
-                active: 'true',
-                create: new Date()
-            });
-
-            order.save((err, response) => common.responseDecorator(err, res, response, 'Order Create'))
-        }
-
-    })
+    order.save((err, response) => common.responseDecorator(err, res, response, 'Order Create'))
 
 };
 

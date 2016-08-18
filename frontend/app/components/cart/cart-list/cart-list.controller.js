@@ -16,7 +16,6 @@ class CartListController {
                 this.cartIsOpen = true;
                 this.callCartType = 'created';
                 this.cart = res;
-                this.OrderService.sendIdCart(this.cart._id);
             })
             .catch(err => {
                 this.callCartType = 'closed';
@@ -25,21 +24,14 @@ class CartListController {
     }
 
     sayHello(currency) {
-        var openCurrency = {
-            coins: currency.coins,
-            dollars: currency.dollars,
-            total: currency.total
-        }
-
         switch(this.callCartType){
-
             case 'created':
                 this.CartService.closeCart(this.cart._id, currency)
                     .then(res => {
                         this.cart = undefined;
                         this.cartIsOpen = false;
                         this.callCartType = 'closed';
-                        Materialize.toast( 'El carrito se ha cerrado correctamente! </br> La caja tiene: ' + res.closeCurrency.total + '€', 5000);
+                        Materialize.toast( 'El carrito se ha cerrado correctamente!', 5000);
                     })
                     .catch(err => {
                         this.$log.debug('Error al cerrar el carrito',err)
@@ -52,7 +44,7 @@ class CartListController {
                         this.cart = res;
                         this.cartIsOpen = true;
                         this.callCartType = 'created';
-                        Materialize.toast( 'El carrito se ha creado correctamente! </br> La caja tiene:' + res.currency.total + '€', 5000);
+                        Materialize.toast( 'El carrito se ha creado correctamente!', 5000);
                     })
                     .catch(err => {
                         this.$log.debug('Error al crear el carrito',err)

@@ -3,7 +3,8 @@ import controller from './cart-order.controller.js'
 export const CartOrderComponent = {
     bindings: {
         cart: '<',
-        isClose: '<'
+        isClose: '<',
+        onSayHello: '&'
     },
     controller,
     template: `
@@ -78,21 +79,24 @@ export const CartOrderComponent = {
                         <ul class="collection with-header">
                             <li class="input-field collection-item pb-40">
                                 <input type="checkbox" id="pay1"
-                                       ng-model="$ctrl.payment.type1"
+                                       ng-model="$ctrl.payment"
                                        ng-false-value="''"
-                                       ng-true-value="'Tarjeta'"/>
+                                       ng-true-value="'Tarjeta'"
+                                       ng-change="$ctrl.onCkickPayment()"/>
                                 <label for="pay1" class="mr-20">Tarjeta</label>
 
                                 <input type="checkbox" id="pay2"
-                                       ng-model="$ctrl.payment.type2"
+                                       ng-model="$ctrl.payment"
                                        ng-false-value="''"
-                                       ng-true-value="'Efectivo'"/>
+                                       ng-true-value="'Efectivo'"
+                                       ng-change="$ctrl.onCkickPayment()"/>
                                 <label for="pay2" class="mr-20">Efectivo</label>
 
                                 <input type="checkbox" id="pay3"
-                                       ng-model="$ctrl.payment.type3"
+                                       ng-model="$ctrl.payment"
                                        ng-false-value="''"
-                                       ng-true-value="'Mixto'"/>
+                                       ng-true-value="'Mixto'"
+                                       ng-change="$ctrl.onCkickPayment()"/>
                                 <label for="pay3" class="mr-20">Mixto</label>
                             </li>
 

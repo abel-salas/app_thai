@@ -2,16 +2,18 @@ const IP_API = 'http://127.0.0.1';
 const PORT = ':8082';
 
 export default class OrderService {
-    constructor($http, $log, $q) {
+    constructor($http, $log, $q, $state) {
         this.$http = $http;
         this.$log = $log;
         this.$q = $q;
+        this.$state = $state;
 
         this.OnInit();
     }
 
     OnInit() {
         this.user = undefined;
+        this.payment = undefined;
         this.orderlines = {
             services: [],
             products: []
@@ -22,7 +24,7 @@ export default class OrderService {
     createOrder(payment) {
         this.$log.log('=> ', this.cartId && this.user && this.orderlines.services.length > 0 || this.orderlines.products.length > 0)
 
-        if (payment &&
+        if (this.payment &&
             this.cartId &&
             this.user &&
             this.orderlines.services.length > 0 ||
@@ -32,7 +34,7 @@ export default class OrderService {
                 cartId: this.cartId,
                 userId: this.user._id,
                 orderlines: this.orderlines,
-                payment: payment,
+                payment: this.payment,
                 totalOrder: this.totalOrder
             }
 
@@ -40,20 +42,33 @@ export default class OrderService {
                 .then(res => {
                     this.$log.log('Order Created success', res);
                     Materialize.toast('Su orden a sido procesada correctamente!', 3000);
+                    this.$state.go('index.users');
                     this.OnInit();
                 })
                 .catch(error => Materialize.toast('Hemos tenido un error al procesar la orden!', 3000));
         } else {
-            Materialize.toast('Falta algun campo por rellenar para enviar el recibo!', 3000);
+            Materialize.toast('Tienes que añadir productos o servicios al recibo!', 3000);
         }
     };
 
     sendIdCart(id) {
+        this.$log.log('cart id', id);
         this.cartId = id;
+        this.$log.log('cart id', this.cartId);
     }
 
     sendUser(user) {
-        this.user = user;
+        if (this.cartId) {
+            this.user = user;
+        } else {
+            Materialize.toast('La caja esta cerrada!', 3000);
+        }
+    }
+
+    sendPayment(payment) {
+
+        this.$log.log('pago change', payment);
+        this.payment = payment;
     }
 
     sendProductOrderline(product) {
@@ -62,6 +77,7 @@ export default class OrderService {
             this.countTotalPriceOrder();
         } else {
             Materialize.toast('Primero debes seleccionar un Cliente!', 3000);
+            this.$state.go('index.users');
         }
     }
 
@@ -71,6 +87,7 @@ export default class OrderService {
             this.countTotalPriceOrder();
         } else {
             Materialize.toast('Primero debes seleccionar un Cliente!', 3000);
+            this.$state.go('index.users');
         }
     }
 

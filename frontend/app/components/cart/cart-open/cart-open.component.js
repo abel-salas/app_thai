@@ -38,7 +38,7 @@ export const CartOpenComponent = {
                       <ul class="collection with-header">
                         <li class="collection-item">
                         TOTAL
-                            <span class="secondary-content">{{$ctrl.currency.total}}€</span>
+                            <span class="secondary-content">{{$ctrl.totalCurrency}}€</span>
                         </li>
                       </ul>
                     </span>

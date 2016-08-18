@@ -1,9 +1,3 @@
-/**
- * app.js
- *
- * Root modulethat imports all modules of the app.
- */
-
 import angular from 'angular'
 import uiRouter from 'angular-ui-router'
 
