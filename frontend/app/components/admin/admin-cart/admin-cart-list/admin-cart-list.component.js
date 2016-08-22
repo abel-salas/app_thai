@@ -7,9 +7,9 @@ export const AdminCartListComponent = {
     },
     template: `
         <div class="container">
-
+            <!--
             <admin-cart-detail cart="$ctrl.selectedCart"></admin-cart-detail>
-
+            -->
             <div class="card">
               <div class="card-content">
                 <div class="row">
@@ -46,11 +46,6 @@ export const AdminCartListComponent = {
                             <td>{{cart.totalPayments.totalMixto}}€</td>
                             <td>{{cart.totalPayments.totalTarjeta}}€</td>
                             <td>{{cart.resultCurrency}}</td>
-                            <td>
-                                <canvas id="doughnut" class="chart chart-doughnut"
-                                     chart-data="cart.totalPayments" chart-labels="$ctrl.labels">
-                                 </canvas>
-                            </td>
                         </tr>
                     </tbody>
                 </table>
