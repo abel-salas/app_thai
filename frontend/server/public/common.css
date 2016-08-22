@@ -1,11 +1,15 @@
-/* padding bottom*/
+
+/* padding*/
+.pdtop-12{
+    padding-top: 12px;
+}
 .pd-10{
     padding-bottom: 10px;
 }
 .pb-40{
     padding-bottom: 40px!important;
 }
-/* margin bottom*/
+/* margin*/
 .ml-10{
     margin-left: 10px;
 }
@@ -17,6 +21,9 @@
 }
 .mr-20{
     margin-right: 20px;
+}
+.mt-10{
+    margin-top: 10px;
 }
 .mt-20{
     margin-top: 20px;
@@ -65,4 +72,35 @@
 /* all */
 ul{
     margin:0!important;
+}
+
+/* EDIT MATERIALIZE MIN CSS*/
+.container{
+    min-width: 98%;
+}
+
+/* NAV LEFT ADMIN */
+.admin-nav{
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+}
+.admin-nav ul a{
+    color: #3f51b5;
+}
+.admin-nav ul i{
+    color: #3f51b5;
+}
+.sidenavAdmin{
+    padding-top: 20px;
+}
+.sidenavAdmin a{
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+}
+
+/* BUTTON ADD + */
+.addfixed{
+    position: fixed;
+    bottom: 15px;
+    left: 15px;
 }

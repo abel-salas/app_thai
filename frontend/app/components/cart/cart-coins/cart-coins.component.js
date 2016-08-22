@@ -37,7 +37,7 @@ export const CartCoinsComponent = {
                         <input id="text" type="text" ng-model="$ctrl.currency.coins.twoEuro" ng-blur="$ctrl.toAddNumberCoins()">
                         <label for="email" ng-class="$ctrl.ifEmpty($ctrl.currency.coins.twoEuro)">2€</label>
                       </div>
-                      <div class="input-field col s2"><span class="secondary-content"> = {{$ctrl.totalCoins}}€</span></div>
+                      <div class="input-field col s2"><span class="secondary-content pdtop-12">{{$ctrl.totalCoins}}€</span></div>
                   </div>
                 </li>
                 <li class="collection-item" style="margin-top:20px;">
@@ -68,7 +68,7 @@ export const CartCoinsComponent = {
                             <input id="text" type="text" ng-model="$ctrl.currency.dollars.hundred" ng-blur="$ctrl.toAddNumberDollars()">
                             <label for="coin" ng-class="$ctrl.ifEmpty($ctrl.currency.dollars.hundred)">100€</label>
                         </div>
-                        <div class="input-field col s2"><span class="secondary-content"> = {{$ctrl.totalDollars}}€</span></div>
+                        <div class="input-field col s2"><span class="secondary-content pdtop-12">{{$ctrl.totalDollars}}€</span></div>
                     </div>
                 </li>
               </ul>

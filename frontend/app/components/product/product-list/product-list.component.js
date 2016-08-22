@@ -1,25 +1,17 @@
-/**
- * components/speaker/speaker-list/speaker-list.component.js
- *
- * Stateless Component that defines a speakers list.
- * Stateless: - Data enters the component through attribute bindings (inputs)
- *            - Data leaves the component through events (outputs)
- */
-
 import controller from './product-list.controller.js'
 
 export const ProductListComponent = {
-  bindings: {
-    products: '<'
-  },
-  controller,
-  template: `
+    bindings: {
+        products: '<'
+    },
+    controller,
+    template: `
 
       <div class="row">
           <div class="input-field col s5">
                <i class="material-icons prefix">search</i>
                <input id="icon_prefix" type="text" class="validate" ng-model="$ctrl.search.input">
-               <label for="icon_prefix">First Name</label>
+               <label for="icon_prefix">Buscar productos</label>
           </div>
 
           <div class="input-field col s7">
@@ -41,7 +33,6 @@ export const ProductListComponent = {
 
     <product-item data="$ctrl.products" on-say-hello="$ctrl.sayHello($event)" search="$ctrl.search"></product-item>
 
-
-    <a class="btn-floating btn-large waves-effect waves-light pink accent-2" ng-click="$ctrl.createProduct()"><i class="material-icons">add</i></a>
+    <a class="btn-floating addfixed btn-large waves-effect waves-light pink accent-2" ng-click="$ctrl.createProduct()"><i class="material-icons">add</i></a>
   `
 }

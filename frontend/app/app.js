@@ -3,7 +3,10 @@ import uiRouter from 'angular-ui-router'
 
 import common from './common/common'
 import components from './components/components'
-import { AppComponent } from './app.component'
+
+const AppComponent = {
+    template: `<div ui-view></div>`
+}
 
 const root = angular
     .module('ThaiApp', [
@@ -19,10 +22,12 @@ const root = angular
                 url: '/index',
                 template: `
                     <ac-header></ac-header>
-                    <div class="row">
-                        <div class="col s8" ui-view></div>
-                        <div class="col s4">
-                            <cart-list></cart-list>
+                    <div class="container">
+                        <div class="row mt-10">
+                            <div class="col s8" ui-view></div>
+                            <div class="col s4">
+                                <cart-list></cart-list>
+                            </div>
                         </div>
                     </div>
                     <ac-footer></ac-footer>

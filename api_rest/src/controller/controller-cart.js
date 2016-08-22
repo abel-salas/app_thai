@@ -36,62 +36,43 @@ exports.getCart = (req, res) => {
 
 };
 
-exports.closeCart = (req, res) => {
-    console.log('________ Post close cart ________');
+exports.getCartById = (req, res) => {
+    console.log('_________ Get cart  by Id________');
 
-    Order.find({cartId: req.params.id}, function (err, order) {
-
-
-        if (err) {
-            return res.status(res.statusCode).json({
-                message: err.toString(),
-                name: 'hemos tenido un error al buscar referencias sobre este carrito'
-            });
-        } else {
-
-            Cart.findById(req.params.id, function (err, cart) {
-                cart.active = 'false';
-                cart.closeCurrency = req.body.totalCurrency;
-                cart.resultCurrency = cart.closeCurrency - cart.openCurrency;
-                cart.closed = new Date();
-
-                cart.save((err, response) => common.responseDecorator(err, res, cart, 'Cart Close'));
-            });
-
-        }
-
+    Cart.findById(req.params.id, function (err, cart) {
+        common.responseDecorator(err, res, cart, 'This Cart By Id')
     });
 
 };
 
+exports.getAllCarts = (req, res) => {
+    console.log('_________ Get All carts ________');
 
-function addTotalPaymentsByCart(order) {
-
-    var totalTarjeta, totalEfectivo, totalMixto;
-    console.log('empieza el calculo >>>>>>>>>>>>>>>>>>>>>>>');
-    order.forEach(obj => {
-        console.log('----- ForEach ---- la order => ', obj);
-        switch (obj.payment) {
-            case 'Tarjeta':
-                totalTarjeta = totalTarjeta + obj.totalOrder;
-                break;
-
-            case 'Efectivo':
-                totalEfectivo = totalEfectivo + obj.totalOrder;
-                break;
-
-            case 'Mixto':
-                totalMixto = totalMixto + obj.totalOrder;
-                break;
-        }
+    Cart.find({}, function (err, cart) {
+        common.responseDecorator(err, res, cart, 'All Carts')
     });
 
-    var totalPayments = {
-        totalTarjeta: totalTarjeta,
-        totalEfectivo: totalEfectivo,
-        totalMixto: totalMixto
-    }
+};
 
-    console.log('acaba el calculo >>>>>>>>>>>>>>>>>>>>>>>', totalPayments);
-    return totalPayments;
+exports.closeCart = (req, res) => {
+    console.log('________ Post close cart ________');
+
+    Cart.findById(req.params.id, function (err, cart) {
+        cart.active = 'false';
+        cart.closeCurrency = req.body.totalCurrency;
+        cart.resultCurrency = cart.closeCurrency - cart.openCurrency;
+        cart.closed = new Date();
+        cart.save((err, response) => common.responseDecorator(err, res, cart, 'Cart Close'));
+    });
+
+};
+
+exports.addResultCart = (req, res) => {
+    console.log('________ Put add result cart ________',req.body);
+
+    Cart.findById(req.params.id, function (err, cart) {
+        cart.totalPayments = req.body;
+        cart.save((err, response) => common.responseDecorator(err, res, cart, 'Cart Result Saved'));
+    });
+
 };

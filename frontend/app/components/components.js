@@ -1,14 +1,9 @@
-/**
- * components/components.js
- *
- * Module that contains the specific components for the application.
- */
-
 import angular from 'angular'
 
 import cart    from './cart'
 import user    from './user'
 import service from './service'
+import admin   from './admin'
 import product from './product'
 
 const components = angular
@@ -16,7 +11,8 @@ const components = angular
         user,
         service,
         product,
-        cart
+        cart,
+        admin
     ])
     .name
 

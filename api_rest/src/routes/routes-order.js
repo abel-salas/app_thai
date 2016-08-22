@@ -13,4 +13,7 @@ module.exports = function(app, request) {
     /* GET order by id cart  */
     app.get('/order/cart/:cartId', controller.getOrderByCartId);
 
+    /* GET order by id cart  */
+    app.get('/order/user/:userId', controller.getOrdersByUser);
+
 }

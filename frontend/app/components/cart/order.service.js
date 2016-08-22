@@ -109,4 +109,20 @@ export default class OrderService {
         this.totalOrder = products + services;
     }
 
+    getOrderByUser(userId) {
+        var deferred = this.$q.defer();
+        this.$http.get(IP_API + PORT + '/order/user/' + userId)
+            .then(res => deferred.resolve(res.data.data))
+            .catch(error => deferred.reject(error));
+        return deferred.promise;
+    }
+
+    getAllOrderByCart(cartId) {
+        var deferred = this.$q.defer();
+        this.$http.get(IP_API + PORT + '/order/cart/' + cartId)
+            .then(res => deferred.resolve(res.data.data))
+            .catch(error => deferred.reject(error));
+        return deferred.promise;
+    }
+
 }

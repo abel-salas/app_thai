@@ -10,7 +10,7 @@ export const CartOpenComponent = {
     },
     controller,
     template: `
-        <div class="card indigo" ng-if="$ctrl.isClose">
+        <div class="card indigo pd-10" ng-if="$ctrl.isClose">
 
             <nav class="indigo lighten-1">
                 <div class="nav-wrapper">
@@ -28,6 +28,14 @@ export const CartOpenComponent = {
                      </ul>
                 </div>
             </nav>
+
+            <div ng-if="!$ctrl.createCart">
+                <div class="card ml-20 mr-20 mt-20">
+                    <div class="card-image">
+                        <img src="img/logoThai.jpg">
+                    </div>
+                </div>
+            </div>
 
             <div ng-if="$ctrl.createCart">
 

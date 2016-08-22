@@ -55,4 +55,20 @@ exports.postCloseOrder = (req, res) => {
 
 };
 
+exports.getOrdersByUser = (req, res) => {
+    console.log('_________ getOrdersByUser ________', req.params.userId);
+
+    Order.find({userId: req.params.userId}, function (err, order) {
+
+        console.log(err, order)
+        if (order.length >= 0) {
+            common.responseDecorator(err, res, order, 'Return all order by user')
+        } else {
+            common.responseDecorator(err, res, order, 'User doesn t orders')
+        }
+
+    })
+
+};
+
 

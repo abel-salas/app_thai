@@ -1,4 +1,3 @@
-
 import controller from './user-list.controller.js'
 
 export const UserListComponent = {
@@ -17,7 +16,7 @@ export const UserListComponent = {
 
         <user-item data="$ctrl.users" on-say-hello="$ctrl.sayHello($event);" input-search="$ctrl.search"></user-item>
 
-        <a class="btn-floating btn-large waves-effect waves-light pink accent-2"
+        <a class="btn-floating addfixed btn-large waves-effect waves-light pink accent-2"
            ng-href="#/index/crear"
            style="margin-top: 15px;">
             <i class="material-icons">add</i>

@@ -6,7 +6,7 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import ProductService from './product.service'
 
 const product = angular
-    .module('products', [])
+    .module('product', [])
     .service('ProductService', ProductService)
     .component('productItem', ProductItemComponent)
     .component('productList', ProductListComponent)
