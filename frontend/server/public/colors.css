@@ -11,7 +11,9 @@ rosa: #ff4081 pink accent-2
 .indigoL1_color{
      color: #5c6bc0;
  }
-
+.zero{color: #00e676;}
+.negative{color: #ff4081;}
+.positive{color: #3f51b5;}
 /* label color
 .input-field label {
     color: #000;

@@ -4,8 +4,7 @@ import adminCart from './admin-cart'
 
 const admin = angular
     .module('admin', [
-        adminCart,
-        'chart.js'
+        adminCart
     ])
     .config(($stateProvider, $urlRouterProvider) => {
         $stateProvider

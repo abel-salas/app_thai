@@ -28,11 +28,11 @@ export const AdminCartListComponent = {
                           <th>Apertura caja</th>
                           <th>Cierre caja</th>
                           <th>Dinero caja</th>
+                          <th>Resultado</th>
                           <th>Pago Efectivo</th>
                           <th>Pago Mixto</th>
                           <th>Pago Tarjeta</th>
                           <th>Total caja</th>
-                          <th>Charts</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -42,10 +42,15 @@ export const AdminCartListComponent = {
                             <td>{{cart.openCurrency}}€</td>
                             <td>{{cart.closeCurrency}}€</td>
                             <td>{{cart.openCurrency + cart.totalPayments.totalEfectivo + cart.totalPayments.totalMixto}}€</td>
+                            <td ng-class="{'zero' : cart.diferenceCart == 0,
+                                           'negative' : cart.diferenceCart < 0,
+                                           'positive' : cart.diferenceCart > 0}">
+                                {{cart.diferenceCart}}
+                            </td>
                             <td>{{cart.totalPayments.totalEfectivo}}€</td>
                             <td>{{cart.totalPayments.totalMixto}}€</td>
                             <td>{{cart.totalPayments.totalTarjeta}}€</td>
-                            <td>{{cart.resultCurrency}}</td>
+                            <td>{{cart.resultCurrency | number:2}}</td>
                         </tr>
                     </tbody>
                 </table>
