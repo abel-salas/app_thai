@@ -16,7 +16,7 @@ export const ProductItemComponent = {
     },
     controller,
     template: `
-           <div class="row">
+           <div class="row box-product">
                 <div class="col s4" ng-repeat="product in $ctrl.data
                                       | filter:$ctrl.search.input
                                       | filter:$ctrl.search.type1
@@ -24,7 +24,7 @@ export const ProductItemComponent = {
                 <div class="card">
 
                 <div class="card-image">
-                    <img class="activator" src="img/sample-1.jpg">
+                    <img class="activator" src="img/product/{{product.img}}.jpg">
                     <span class="card-title">{{product.type}}</span>
                 </div>
 

@@ -1,6 +1,6 @@
 const Order = require("../model/model-order.js");
 const common = require("../common/response.decorator.js");
-
+const servicePrint = require("../common/print.service.js");
 
 exports.createOrder = (req, res) => {
     console.log('_________ Post create Order ________');
@@ -16,7 +16,12 @@ exports.createOrder = (req, res) => {
         created: new Date()
     });
 
-    order.save((err, response) => common.responseDecorator(err, res, response, 'Order Create'))
+    order.save((err, response) => {
+        if(!err){
+            servicePrint.printOrder(response);
+        }
+        common.responseDecorator(err, res, response, 'Order Create')
+    })
 
 };
 

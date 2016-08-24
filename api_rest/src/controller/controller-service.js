@@ -42,6 +42,7 @@ exports.addService = function(req, res) {
     "type": req.body.type,
     "price": req.body.price,
     "brand": req.body.brand,
+    "img": req.body.img,
     "description": req.body.description,
     "created": new Date()
   });
@@ -71,6 +72,7 @@ exports.updateService = function(req, res){
       service.type = req.body.type;
       service.price = req.body.price;
       service.brand = req.body.brand;
+      service.img = req.body.img;
       service.description = req.body.description;
       service.modified = new Date();
 

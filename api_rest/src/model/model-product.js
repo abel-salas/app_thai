@@ -10,6 +10,7 @@ var product = mongoose.Schema({
   type: String,
   price: Number,
   brand: String,
+  img: String,
   description: String,
   stock: Number,
   created: Date,

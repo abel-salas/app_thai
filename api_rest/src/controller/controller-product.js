@@ -45,6 +45,7 @@ exports.addProduct = function(req, res) {
     "type": req.body.type,
     "price": req.body.price,
     "brand": req.body.brand,
+    "img": req.body.img,
     "stock": req.body.stock,
     "description": req.body.description,
     "created": new Date()
@@ -76,6 +77,7 @@ exports.updateProduct = function(req, res){
       product.type = req.body.type;
       product.price = req.body.price;
       product.brand = req.body.brand;
+      product.img = req.body.img;
       product.stock = req.body.stock;
       product.description = req.body.description;
       product.modified = new Date();

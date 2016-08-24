@@ -42,6 +42,17 @@ export const ServiceDetailComponent = {
 
             </div>
 
+            <div class="row">
+              <div class="input-field col s6">
+                <i class="material-icons prefix">class</i>
+                <input id="brand" type="text" class="validate" ng-model="$ctrl.service.img">
+                <label for="brand" ng-class="$ctrl.ifEmpty($ctrl.service.brand)">Imagen</label>
+              </div>
+              <div class="col s6" ng-if="$ctrl.service.img">
+                <img class="img_detail_product" src="img/service/{{$ctrl.service.img}}.jpg">
+              </div>
+            </div>
+
             <div class="row mb-60">
               <div class="input-field col s12">
                 <i class="material-icons prefix">description</i>

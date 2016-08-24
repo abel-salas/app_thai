@@ -1,6 +1,7 @@
 const Cart = require("../model/model-cart.js");
 const Order = require("../model/model-order.js");
 const common = require("../common/response.decorator.js");
+const servicePrint = require("../common/print.service.js")
 
 var Promise = require('promise');
 
@@ -72,7 +73,13 @@ exports.addResultCart = (req, res) => {
 
     Cart.findById(req.params.id, function (err, cart) {
         cart.totalPayments = req.body;
-        cart.save((err, response) => common.responseDecorator(err, res, cart, 'Cart Result Saved'));
+        cart.save((err, response) => {
+            if(!err){
+                console.log('print if result ');
+                servicePrint.printCart(response);
+            }
+            common.responseDecorator(err, res, cart, 'Cart Result Saved')
+        });
     });
 
 };

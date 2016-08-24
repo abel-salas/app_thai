@@ -45,7 +45,7 @@ export const AdminCartListComponent = {
                             <td ng-class="{'zero' : cart.diferenceCart == 0,
                                            'negative' : cart.diferenceCart < 0,
                                            'positive' : cart.diferenceCart > 0}">
-                                {{cart.diferenceCart}}
+                                {{cart.diferenceCart | number:2}}
                             </td>
                             <td>{{cart.totalPayments.totalEfectivo}}€</td>
                             <td>{{cart.totalPayments.totalMixto}}€</td>

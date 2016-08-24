@@ -16,7 +16,7 @@ export const ServiceItemComponent = {
   },
   controller,
   template: `
-    <div class="row">
+    <div class="row box-product">
         <div class="col s4" ng-repeat="service in $ctrl.data
                                       | filter:$ctrl.search.input
                                       | filter:$ctrl.search.type1
@@ -26,7 +26,7 @@ export const ServiceItemComponent = {
               <div class="card">
 
                 <div class="card-image">
-                  <img class="activator" src="img/sample-1.jpg">
+                  <img class="activator" src="img/service/{{service.img}}.jpg">
                   <span class="card-title">{{service.type}}</span>
                 </div>
 
