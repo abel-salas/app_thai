@@ -7,19 +7,19 @@ Type=Application
 Version=1.0
 
 # The name of the application
-Name=LogsApp
+Name=CloseApp
 
 # A comment which can/will be used as a tooltip
-Comment=Arranca Carlos
+Comment=Stop Application
 
 # The path to the folder in which the executable is run
 Path=/home/app_thai
 
 # The executable of the application.
-Exec=sudo docker-compose logs
+Exec=sudo docker-compose stop
 
 # The name of the icon that will be used to display this entry
-Icon=closeApp
+Icon=/home/app_thai/launch/icons/stop.png
 
 # Describes whether this application needs to be run in a terminal or not
 Terminal=true

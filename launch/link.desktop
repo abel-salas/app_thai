@@ -10,7 +10,7 @@ Version=1.0
 Name=OpenApp
 
 # A comment which can/will be used as a tooltip
-Comment=Arranca Carlos
+Comment=Start Application
 
 # The path to the folder in which the executable is run
 Path=/home/app_thai
@@ -19,7 +19,7 @@ Path=/home/app_thai
 Exec=sudo docker-compose up -d
 
 # The name of the icon that will be used to display this entry
-Icon=jmemorize
+Icon=/home/app_thai/launch/icons/start.png
 
 # Describes whether this application needs to be run in a terminal or not
 Terminal=true
