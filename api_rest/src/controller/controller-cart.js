@@ -49,7 +49,7 @@ exports.getCartById = (req, res) => {
 exports.getAllCarts = (req, res) => {
     console.log('_________ Get All carts ________');
 
-    Cart.find({}, function (err, cart) {
+    Cart.find({active: 'false'}, function (err, cart) {
         common.responseDecorator(err, res, cart, 'All Carts')
     });
 
