@@ -22,13 +22,13 @@ exports.printOrder = (obj) => {
 
         var ticket = {
             title: "Estética Thai",
-            telf: "000 000 000",
-            city: "Malgrat de mar",
-            address: "carrer girona, 69",
+            nif: "Nif: 38852399-V",
+            telf: "Telf: 697 87 36 52",
+            city: "08380 - Malgrat de mar",
+            address: "Carrer girona, 69",
 
             date: obj.created,
-            name: user.name,
-            lastName: user.lastName,
+            name: user.name + ' ' + user.lastName,
             services: obj.orderlines[0].services,
             products: obj.orderlines[0].products,
             total: obj.totalOrder
@@ -45,85 +45,156 @@ exports.printOrder = (obj) => {
 };
 
 exports.printCart = (obj) => {
-
+    console.log('Send Printer Cart',obj);
+    
     var ticket = {
         title: "Estética Thai",
-        telf: "000 000 000",
-        city: "Malgrat de mar",
-        address: "carrer girona, 69",
+        telf: "Telf: 697 87 36 52",
+        city: "08380 - Malgrat de mar",
+        address: "Carrer girona, 69",
+        nif: "Nif: 38852399-V",
         cartId: obj._id,
         closed: obj.closed,
         totalCard: obj.totalPayments.totalTarjeta,
         totalEfectivo: obj.totalPayments.totalEfectivo,
-        total: obj.resultCurrency - obj.totalPayments.totalMixto
+        total: obj.totalPayments.totalTarjeta + obj.totalPayments.totalEfectivo,
+        date: obj.closed
     };
 
-    console.log('Send Printer Cart', ticket);
-    sendPrinter(ticket);
-};
-
-
-function sendPrinter(ticket){
-    console.log('PRINTER CODE THAI');
-    /*
-    * https://www.npmjs.com/package/node-thermal-printer
-    */
     printer.init({
         type: 'bixolon',
         interface: '/dev/usb/lp0'
     });
 
-    printer.alignCenter();
     printer.isPrinterConnected( isConnected => {
         if(isConnected){
 
             console.log('Conection Printer Success', isConnected)
+
+            printer.setTextDoubleWidth();
             printer.println(ticket.title);
+
+            printer.setTextNormal();
+            printer.println(ticket.nif);
             printer.println(ticket.telf);
             printer.println(ticket.city);
             printer.println(ticket.address);
-            printer.println(ticket.date);
-            printer.print(ticket.name);
-            printer.print(' ');
-            printer.print(ticket.lastName);
-            ticket.services.forEach(obj => {
-                printer.println(obj.name);
-                printer.println('-');
-                printer.print(obj.type);
-                printer.print('-');
-                printer.print(obj.brand);
-                printer.print('-');
-                printer.print('precio = ');
-                printer.println(obj.price);
-            })
-            ticket.products.forEach(obj => {
-                printer.println(obj.name);
-                printer.println('-');
-                printer.print(obj.type);
-                printer.print('-');
-                printer.print(obj.brand);
-                printer.print('-');
-                printer.print('precio = ');
-                printer.println(obj.price);
-            })
-            printer.println(' - - - - - - - - - - - - - - ');
-            printer.println('TOTAL RECIVO = ');
-            printer.println(ticket.total);
-            printer.println(' ');
-            printer.println(' ');
-            printer.println(' ');
-            printer.leftRight("Left", "Right");                 // Prints text left and right
-            printer.table(["One", "Two", "Three"]);             // Prints table equaly
-            printer.tableCustom([                               // Prints table with custom settings (text, align, width, bold)
-                {text: "Left", align: "LEFT", width: 0.5},
-                {text: "Center", align: "CENTER", width: 0.25, bold: true},
-                {text: "Right", align: "RIGHT", width: 0.25}
+
+            printer.println(ticket.date); 
+
+            printer.println(" "); 
+
+            printer.setTextNormal();
+
+            printer.println("ID caja"); 
+            printer.println(ticket.cartId);
+
+            printer.println(" "); 
+
+            printer.tableCustom([
+                {text: 'Total Tarjeta', align: "LEFT", width: 0.5, bold: true},
+                {text: ticket.totalCard, align: "RIGHT", width: 0.1, bold: true}
             ]);
+            printer.println(" "); 
+            printer.tableCustom([
+                {text: 'Total Efectivo', align: "LEFT", width: 0.5, bold: true},
+                {text: ticket.totalEfectivo, align: "RIGHT", width: 0.1, bold: true}
+            ]);
+            printer.println(" "); 
+            printer.underlineThick(true); // line
+            printer.tableCustom([
+                {text: 'Total Caja', align: "LEFT", width: 0.4, bold: true},
+                {text: ticket.total, align: "RIGHT", width: 0.2, bold: true}
+            ]);
+            printer.underlineThick(false); // line
+            printer.println(" "); 
+           
+            printer.cut();
+            printer.execute();
+        } else {
+            printer.println('ERROR CONECTION');
+        }
+    });
+};
+
+
+function sendPrinter(ticket){
+    console.log('PRINTER CODE THAI');
+
+    printer.init({
+        type: 'bixolon',
+        interface: '/dev/usb/lp0'
+    });
+
+    printer.isPrinterConnected( isConnected => {
+        if(isConnected){
+
+            console.log('Conection Printer Success', isConnected)
+
+            printer.setTextDoubleWidth();
+            printer.println(ticket.title);
+
+            printer.setTextNormal();
+            printer.println(ticket.nif);
+            printer.println(ticket.telf);
+            printer.println(ticket.city);
+            printer.println(ticket.address);
+
+            printer.println(ticket.date); 
+
+            printer.println(" "); 
+
+            printer.println(ticket.name);
+
+            printer.println(" "); 
+
+            if (ticket.services) {
+                printer.println("Servicios: "); 
+            }
+            
+            ticket.services.forEach(obj => {                
+                printer.tableCustom([
+                    {text: obj.name, align: "LEFT", width: 0.53, bold: true},
+                    {text: obj.price, align: "RIGHT", width: 0.1}
+                ]);
+            })
+
+            printer.println(" "); 
+            
+            if (ticket.products) {
+                printer.println("Productos: ");             
+            }
+            
+            ticket.products.forEach(obj => {
+                printer.tableCustom([
+                    {text: obj.name, align: "LEFT", width: 0.53, bold: true},
+                    {text: obj.price, align: "RIGHT", width: 0.1}
+                ]);
+            })
+        
+            printer.println(" "); 
+            printer.println(" "); 
+
+            printer.setTextDoubleWidth();
+            printer.underlineThick(true); // line
+            printer.tableCustom([
+                {text: 'TOTAL ', align: "LEFT", width: 0.2, bold: true},
+                {text: ticket.total, align: "RIGHT", width: 0.1, bold: true}
+            ]);
+            printer.underlineThick(false); // line
+            printer.println(" "); 
+            printer.println(" "); 
+
+            printer.alignCenter(); 
+            printer.println("Gracies per la   seva Visita"); 
+
+            printer.println(" "); 
+            printer.println(" "); 
 
             printer.cut();
             printer.execute();
         } else {
-            console.log('Connection Printer Error!');
+            printer.println('ERROR CONECTION');
         }
     });
 };
