@@ -1,11 +1,7 @@
 export const FooterComponent = {
     template: `
-    <footer class="page-footer blue-grey darken-2">
-      <div class="footer-copyright blue-grey darken-1">
-        <div class="container">
-          © 2016 Abel Salas.
-        </div>
-      </div>
+    <footer class="blue-grey darken-2" style="position: fixed;bottom: 0;width: 100%;">
+     <span class="grey-text" style="position: relative;left: 45%;">© 2016 Abel Salas.</span>
     </footer>
   `
 }

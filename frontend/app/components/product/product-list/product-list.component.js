@@ -19,13 +19,13 @@ export const ProductListComponent = {
                <input type="checkbox" id="test1"
                       ng-model="$ctrl.search.type1"
                       ng-false-value="''"
-                      ng-true-value="'skeindor'"/>
+                      ng-true-value="'skeyndor'"/>
                <label for="test1" class="mr-20">Skeindor</label>
 
                <input type="checkbox" id="test2"
                       ng-model="$ctrl.search.type2"
                       ng-false-value="''"
-                      ng-true-value="'phyt'"/>
+                      ng-true-value="'phyts'"/>
                <label for="test2" class="mr-20">Phyt's</label>
 
           </div>

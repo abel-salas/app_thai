@@ -15,7 +15,7 @@ const root = angular
         components
     ])
     .component('thaiApp', AppComponent)
-    .config(($stateProvider, $urlRouterProvider) => {
+    .config(($stateProvider) => {
 
         $stateProvider
             .state('index', {
@@ -34,6 +34,7 @@ const root = angular
                 `
             })
     })
+
 
 // Bootstrap the app.
 document.addEventListener('DOMContentLoaded', () => angular.bootstrap(document, ['ThaiApp']))
