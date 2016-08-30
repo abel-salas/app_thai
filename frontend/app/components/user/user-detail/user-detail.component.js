@@ -83,7 +83,7 @@ export const UserDetailComponent = {
                 <i class="material-icons right">send</i>
 
             </button>
-          
+
           </form>
         </div>
       </section>

@@ -6,6 +6,7 @@ var mongoose = require('mongoose');
  */
 
 var order = mongoose.Schema({
+    billNumber: Number,
     userId: String,
     cartId: String,
     active: Boolean,

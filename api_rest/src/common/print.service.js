@@ -26,7 +26,7 @@ exports.printOrder = (obj) => {
             telf: "Telf: 697 87 36 52",
             city: "08380 - Malgrat de mar",
             address: "Carrer girona, 69",
-
+            billNumber: obj.billNumber,
             date: obj.created,
             name: user.name + ' ' + user.lastName,
             services: obj.orderlines[0].services,
@@ -143,6 +143,11 @@ function sendPrinter(ticket){
             printer.println(ticket.date); 
 
             printer.println(" "); 
+
+            printer.tableCustom([
+                {text: 'Factura: ', align: "LEFT", width: 0.2, bold: true},
+                {text: ticket.billNumber, align: "RIGHT", width: 0.2, bold: true}
+            ]);
 
             printer.println(ticket.name);
 

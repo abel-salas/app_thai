@@ -1,5 +1,6 @@
 var middleware = require("./middleware.js");
 var controller = require("../controller/controller-order.js");
+var controllerBillNumber = require("../controller/controller-bill-id.js");
 
 
 module.exports = function(app, request) {
@@ -15,5 +16,8 @@ module.exports = function(app, request) {
 
     /* GET order by id cart  */
     app.get('/order/user/:userId', controller.getOrdersByUser);
+
+    /* POST init bill id number */
+    app.post('/order/bill/init/:number', controllerBillNumber.initBillId);
 
 }

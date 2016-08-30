@@ -51,7 +51,6 @@ class UserDetailController {
             .catch(error => Materialize.toast(user.name + 'Hemos tenido un error al Eliminar el usuario!', 3000))
     }
 
-
 }
 
 export default UserDetailController
