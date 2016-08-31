@@ -9,7 +9,7 @@ class UserDetailController {
             case true:
                 this.createUser = true
         }
-
+        //this.user.yearOfBirth = "00-00-0000";
     }
 
     submitForm(user) {

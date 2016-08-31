@@ -33,8 +33,11 @@ export const UserDetailComponent = {
 
               <div class="input-field col s6">
                 <i class="material-icons prefix">redeem</i>
-                <input id="yearOfBirth" type="text" class="validate" ng-model="$ctrl.user.yearOfBirth">
-                <label for="yearOfBirth" ng-class="$ctrl.ifEmpty($ctrl.user.yearOfBirth)">Fecha de nacimiento</label>
+                <input id="yearOfBirth"
+                        type="date"
+                        class="validate"
+                        ng-model="$ctrl.user.yearOfBirth">
+                <label for="yearOfBirth" class="active">Fecha de nacimiento</label>
               </div>
 
             </div>
