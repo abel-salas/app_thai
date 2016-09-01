@@ -28,6 +28,18 @@ export const ProductListComponent = {
                       ng-true-value="'phyts'"/>
                <label for="test2" class="mr-20">Phyt's</label>
 
+               <input type="checkbox" id="test3"
+                      ng-model="$ctrl.search.type3"
+                      ng-false-value="''"
+                      ng-true-value="'Artdeco'"/>
+               <label for="test3" class="mr-20">Artdeco</label>
+
+               <input type="checkbox" id="test4"
+                      ng-model="$ctrl.search.type4"
+                      ng-false-value="''"
+                      ng-true-value="'Peggy Sage'"/>
+               <label for="test4" class="mr-20">Peggy Sage</label>
+
           </div>
     </div>
 

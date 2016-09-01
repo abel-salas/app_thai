@@ -20,7 +20,9 @@ export const ProductItemComponent = {
                 <div class="col s3" ng-repeat="product in $ctrl.data
                                       | filter:$ctrl.search.input
                                       | filter:$ctrl.search.type1
-                                      | filter:$ctrl.search.type2">
+                                      | filter:$ctrl.search.type2
+                                      | filter:$ctrl.search.type3
+                                      | filter:$ctrl.search.type4">
                 <div class="card">
 
                 <div class="card-image">

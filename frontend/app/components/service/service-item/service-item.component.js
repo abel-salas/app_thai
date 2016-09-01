@@ -22,7 +22,8 @@ export const ServiceItemComponent = {
                                       | filter:$ctrl.search.type1
                                       | filter:$ctrl.search.type2
                                       | filter:$ctrl.search.type3
-                                      | filter:$ctrl.search.type4">
+                                      | filter:$ctrl.search.type4
+                                      | filter:$ctrl.search.type5">
               <div class="card">
 
                 <div class="card-image">

@@ -38,7 +38,13 @@ export const ServiceListComponent = {
                       ng-model="$ctrl.search.type4"
                       ng-false-value="''"
                       ng-true-value="'corporal'"/>
-               <label for="test4">Corporal</label>
+               <label for="test4" class="mr-20">Corporal</label>
+
+               <input type="checkbox" id="test5"
+                      ng-model="$ctrl.search.type5"
+                      ng-false-value="''"
+                      ng-true-value="'Laser'"/>
+               <label for="test5" class="mr-20">Laser</label>
 
           </div>
 
