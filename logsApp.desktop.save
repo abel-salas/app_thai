@@ -7,19 +7,20 @@ Type=Application
 Version=1.0
 
 # The name of the application
-Name=OpenApp
+Name=
+eApp
 
 # A comment which can/will be used as a tooltip
-Comment=Start Application
+Comment=Arranca Carlos
 
 # The path to the folder in which the executable is run
 Path=/home/app_thai
 
 # The executable of the application.
-Exec=sh -c "sudo docker-compose up -d; sleep 5; chromium-browser --kiosk http://localhost:8080; exit;"
+Exec=sudo docker-compose logs
 
 # The name of the icon that will be used to display this entry
-Icon=/home/app_thai/launch/icons/start.png
+Icon=LogsApp
 
 # Describes whether this application needs to be run in a terminal or not
 Terminal=true
