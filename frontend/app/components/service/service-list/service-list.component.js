@@ -6,9 +6,9 @@ export const ServiceListComponent = {
     },
     controller,
     template: `
-    <div class="row">
+    <div class="row filters-fixed">
 
-          <div class="input-field col s5">
+          <div class="input-field col s3">
                <i class="material-icons prefix">search</i>
                <input id="icon_prefix" type="text" class="validate" ng-model="$ctrl.search.input">
                <label for="icon_prefix">Buscar servicios</label>

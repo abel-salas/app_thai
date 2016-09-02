@@ -24,9 +24,13 @@ const root = angular
                     <ac-header></ac-header>
                     <div class="container">
                         <div class="row mt-10">
-                            <div class="col s8" ui-view></div>
+                            <div class="col s8">
+                                <div ui-view></div>
+                            </div>
                             <div class="col s4">
-                                <cart-list></cart-list>
+                                <div class="cart-fixed">
+                                    <cart-list></cart-list>
+                                </div>
                             </div>
                         </div>
                     </div>
