@@ -16,7 +16,7 @@ Comment=Start Application
 Path=/home/app_thai
 
 # The executable of the application.
-Exec=sh -c "sudo docker-compose up -d; sleep 5; chromium-browser --kiosk http://localhost:8080; exit;"
+Exec=/home/app_thai/launch/init.sh
 
 # The name of the icon that will be used to display this entry
 Icon=/home/app_thai/launch/icons/start.png
