@@ -9,6 +9,9 @@
 .pb-40{
     padding-bottom: 40px!important;
 }
+.pb-100{
+    padding-bottom: 100px!important;
+}
 /* margin*/
 .ml-10{
     margin-left: 10px;
@@ -111,13 +114,13 @@ ul{
     overflow: hidden;
 }
 .card .card-image img {
-    min-height: 100%;
+    right: 0;
+    left: 0;
+    margin: auto;
 }
-.img_detail_product{
-    width: 80px;
-    max-height: 100px;
+.flow-hidden{
+    overflow: hidden;
 }
-
 input[type=date]::-webkit-clear-button {
     font-size: 18px;
     height: 30px;

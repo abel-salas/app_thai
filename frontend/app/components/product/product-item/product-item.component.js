@@ -16,35 +16,38 @@ export const ProductItemComponent = {
     },
     controller,
     template: `
-           <div class="row box-product">
+           <div class="row box-product pb-100">
                 <div class="col s3" ng-repeat="product in $ctrl.data
                                       | filter:$ctrl.search.input
                                       | filter:$ctrl.search.type1
                                       | filter:$ctrl.search.type2
                                       | filter:$ctrl.search.type3
                                       | filter:$ctrl.search.type4">
-                <div class="card">
+                    <div class="card">
 
-                <div class="card-image">
-                    <img class="activator" src="img/product/{{product.img}}.jpg">
-                    <span class="card-title">{{product.type}}</span>
-                </div>
+                        <div class="card-image">
+                            <img class="activator" src="img/product/{{product.img.name}}.jpg" ng-style="product.img.style">
+                            <span class="card-title">{{product.type}}</span>
+                        </div>
 
-                <button ng-click="$ctrl.onClick(product)" class="btn-floating btn-large waves-effect waves-light indigo right btn_price">
-                    {{product.price}}€
-                </button>
+                        <button ng-click="$ctrl.onClick(product)" class="btn-floating btn-large waves-effect waves-light indigo right btn_price">
+                            {{product.price}}€
+                        </button>
 
-                <div class="card-content activator">
-                    <i class="material-icons left">more_vert</i></a>
-                    <span class="grey-text text-darken-4">{{product.name}}</span>
-                </div>
+                        <div class="card-content activator">
+                            <i class="material-icons left">more_vert</i></a>
+                            <span class="grey-text text-darken-4">{{product.name}}</span>
+                        </div>
 
-                <div class="card-reveal">
-                    <span class="card-title grey-text text-darken-4">{{product.name}}<i class="material-icons right">close</i></span>
-                    <p>{{product.description}}</p>
-                    <p>{{product.brand}}</p>
-                    <a ng-href="#/index/product/{{product._id}}" class="btn-floating waves-effect waves-light pink accent-2 button_edit">
-                    <i class="material-icons right">edit</i></a>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">{{product.name}}<i class="material-icons right">close</i></span>
+                            <p>{{product.description}}</p>
+                            <p>{{product.brand}}</p>
+                            <a ng-href="#/index/product/{{product._id}}" class="btn-floating waves-effect waves-light pink accent-2 button_edit">
+                            <i class="material-icons right">edit</i></a>
+                        </div>
+                    </div>
+
                 </div>
 
            </div>

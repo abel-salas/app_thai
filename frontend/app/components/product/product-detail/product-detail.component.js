@@ -9,6 +9,7 @@ export const ProductDetailComponent = {
   template: `
     <article class="card">
       <section class="card-content">
+      {{$ctrl.product}}
          <div class="row">
           <form class="col s12 mt-20" ng-submit="$ctrl.submitForm($ctrl.product)">
             <div class="row">
@@ -42,11 +43,27 @@ export const ProductDetailComponent = {
             <div class="row">
               <div class="input-field col s6">
                 <i class="material-icons prefix">class</i>
-                <input id="brand" type="text" class="validate" ng-model="$ctrl.product.img">
-                <label for="brand" ng-class="$ctrl.ifEmpty($ctrl.product.brand)">Imagen</label>
+                <input id="brand" type="text" class="validate" ng-model="$ctrl.product.img.name">
+                <label for="brand" ng-class="$ctrl.ifEmpty($ctrl.product.img.name)">Imagen</label>
               </div>
-              <div class="col s6" ng-if="$ctrl.product.img">
-                <img class="img_detail_product" src="img/product/{{$ctrl.product.img}}.jpg">
+              <div class="col s6" ng-if="$ctrl.product.img.name">
+                <div class="row">
+                  <div class="col s6 flow-hidden" >
+                    <div class="card-image">
+                        <img src="img/product/{{$ctrl.product.img.name}}.jpg" ng-style="$ctrl.styleInline">
+                    </div>
+                  </div>
+                  <div class="col s6">
+                    <p>Ancho de la imagen:</p>
+                    <p class="range-field">
+                      <input type="range" id="test5" min="-100" max="100" ng-model="$ctrl.input.top" ng-change="$ctrl.insertPx('top')"/>
+                    </p>
+                    <p>Posicion vertical de la imagen:</p>
+                    <p class="range-field">
+                      <input type="range" id="test5" min="50" max="150" ng-model="$ctrl.input.width" ng-change="$ctrl.insertPx('width')"/>
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -69,7 +86,7 @@ export const ProductDetailComponent = {
             <button type="submit" class="waves-effect waves-light btn right indigo">Enviar
                 <i class="material-icons right">send</i>
             </button>
-          
+
           </form>
         </div>
       </section>

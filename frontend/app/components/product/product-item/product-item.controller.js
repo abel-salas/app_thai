@@ -1,5 +1,6 @@
 class ProductItemController {
     constructor() {
+
     }
 
     onClick(value) {
@@ -7,7 +8,6 @@ class ProductItemController {
             $event: value
         })
     }
-
 }
 
 export default ProductItemController

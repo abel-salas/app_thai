@@ -16,7 +16,7 @@ export const ServiceItemComponent = {
   },
   controller,
   template: `
-    <div class="row box-product">
+    <div class="row box-product pb-100">
         <div class="col s3" ng-repeat="service in $ctrl.data
                                       | filter:$ctrl.search.input
                                       | filter:$ctrl.search.type1
