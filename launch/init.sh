@@ -31,9 +31,7 @@ function backupDb(){
 
 
 ################### Variables ####################
-
 DATE=`date +%Y-%m-%d`
-
 dialog_title="CDmon's Panell de Gestió Interna"
 root_directory="/home/app_thai/launch/"
 
@@ -50,14 +48,14 @@ trap "exit" SIGHUP SIGINT SIGTERM
 while true ; do
    exec 3>&1
    menuitem=$(dialog --clear --backtitle "${dialog_title}" \
-   --title "[ MENU APP THAI ] - [ $DATE ]" \
-   --cancel-label "Salir" \
+   --title "[ MENU PGI ] [ Dia: ${DATE} ]" \
+   --cancel-label "Exit" \
    --menu "Elige una tarea" 14 50 10 \
-   Start "Encender la aplicacion" \
-   Stop "Apagar la aplicacion" \
+   Start "Start App" \
+   Logs "Logs Containers" \
+   Stop "Stop Containers" \
+   Reload "Restart Containers" \
    Backup "Copia de seguridad de la base de datos" \
-   Restart "Reiniciar la aplicacion" \
-   Logs "Logs de la aplicacion" \
    2>&1 1>&3)
    exit_status=$?
    exec 3>&-
@@ -65,20 +63,17 @@ while true ; do
       ${dialogcancel})
          clear
          echo "Su tarea ha sido finalizada con exito." >&2
-         exit
-      ;;
+         exit;;
       ${dialogesc})
          clear
          echo "Su tarea ha sido abortada." >&2
-         exit 1
-      ;;
+         exit 1;;
    esac
    case ${menuitem} in
       Start)  appStart;;
-      Stop)   appStop;;
       Logs)   appLogs;;
-      Backup) backupDb;;
-      Restart) appRemove && appStart;;
+      Stop)   appStop;;
+      Reload) appStop && appStart;;
+      Backup) copyDatabase;;
    esac
 done
-##################################################
