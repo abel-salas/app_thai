@@ -8,9 +8,9 @@ export default class ServiceService {
         this.$q = $q
     }
 
-    getServices() {
+    getServices(gender) {
         var deferred = this.$q.defer();
-        this.$http.get(IP_API + PORT + '/services/')
+        this.$http.get(IP_API + PORT + '/services/' + gender)
             .then(response => deferred.resolve(response.data.data))
             .catch(error => deferred.reject(error));
         return deferred.promise;

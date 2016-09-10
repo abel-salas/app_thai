@@ -1,26 +1,84 @@
 #!/bin/bash
+################### Functions ####################
+function appStart() {
+   cd $root_directory;
+   sudo docker-compose up -d;
+   sleep 10;
+   chromium-browser --kiosk http://localhost:8080;
+}
+
+function appStop() {
+   cd $root_directory;
+   sudo docker-compose stop;
+   killall chromium-browser
+}
+
+function appLogs() {
+   cd $root_directory;
+   sudo docker-compose logs;
+}
+
+function appRemove() {
+   cd $root_directory;
+   sudo docker-compose down;
+}
+
+function backupDb(){
+    cd $root_directory;
+    tar -zcvf /home/abel/Dropbox/EsteticaThai/db_$DATE.tar.gz /var/mongo/data
+}
+##################################################
+
+
+################### Variables ####################
 
 DATE=`date +%Y-%m-%d`
 
-echo "Buenos dias Thai, hoy va ha ser un gran dia!"
+dialog_title="CDmon's Panell de Gestió Interna"
+root_directory="/home/app_thai/launch/"
 
-echo ""
+# Menu exit & cancel behavior
+dialogcancel=1
+dialogesc=255
 
-echo "La fecha de hoy es $DATE."
+# Trap and delete temp files
+trap "exit" SIGHUP SIGINT SIGTERM
+##################################################
 
-echo ""
 
-
-sudo docker-compose up -d
-
-tar -zcvf /home/abel/Dropbox/EsteticaThai/db_$DATE.tar.gz /var/mongo/data
-
-echo ""
-
-echo "Hemos finalizado la copia de seguridad en Dropbox con fecha $DATE"
-
-echo ""
-
-echo "Recuerda que para poder cerrar el terminal deberas presionar Ctrl + C"
-
-chromium-browser --kiosk http://localhost:8080
+##################### Main #######################
+while true ; do
+   exec 3>&1
+   menuitem=$(dialog --clear --backtitle "${dialog_title}" \
+   --title "[ MENU APP THAI ] - [ $DATE ]" \
+   --cancel-label "Salir" \
+   --menu "Elige una tarea" 14 50 10 \
+   Start "Encender la aplicacion" \
+   Stop "Apagar la aplicacion" \
+   Backup "Copia de seguridad de la base de datos" \
+   Restart "Reiniciar la aplicacion" \
+   Logs "Logs de la aplicacion" \
+   2>&1 1>&3)
+   exit_status=$?
+   exec 3>&-
+   case ${exit_status} in
+      ${dialogcancel})
+         clear
+         echo "Su tarea ha sido finalizada con exito." >&2
+         exit
+      ;;
+      ${dialogesc})
+         clear
+         echo "Su tarea ha sido abortada." >&2
+         exit 1
+      ;;
+   esac
+   case ${menuitem} in
+      Start)  appStart;;
+      Stop)   appStop;;
+      Logs)   appLogs;;
+      Backup) backupDb;;
+      Restart) appRemove && appStart;;
+   esac
+done
+##################################################

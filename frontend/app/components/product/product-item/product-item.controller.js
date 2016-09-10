@@ -8,6 +8,7 @@ class ProductItemController {
             $event: value
         })
     }
+
 }
 
 export default ProductItemController

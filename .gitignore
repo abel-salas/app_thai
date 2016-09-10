@@ -13,8 +13,9 @@ node_modules
 bower_components/
 jspm_packages
 
-frontend/server/public/img/
-launch/init.sh
+frontend/server/public/img/service/
+frontend/server/public/img/product/
+# launch/init.sh
 
 # Optional npm cache directory
 .npm

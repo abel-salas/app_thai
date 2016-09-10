@@ -6,10 +6,36 @@ export const HeaderComponent = {
                 <a href="" class="brand-logo">THAI</a>
 
                 <ul class="right hide-on-med-and-down">
-                  <li><a href="#/index/users"><i class="material-icons left">contacts</i>Usuarios</a></li>
-                  <li><a href="#/index/services"><i class="material-icons left">shop</i>Servicios</a></li>
-                  <li><a href="#/index/products"><i class="material-icons left">shop_two</i>Productos</a></li>
-                  <li><a href="#/admin"><i class="material-icons left">equalizer</i>Admin</a></li>
+                  <li>
+                    <a ui-sref="index.users" ui-sref-active="nav-active">
+                        <img src="img/icon/people.svg">
+                    </a>
+                  </li>
+                  <li>
+                    <a ui-sref="index.servicesWoman" ui-sref-active="nav-active">
+                      <img src="img/icon/woman.svg">
+                    </a>
+                  </li>
+                  <li>
+                    <a ui-sref="index.servicesMen" ui-sref-active="nav-active">
+                        <img src="img/icon/men.svg">
+                    </a>
+                  </li>
+                  <li>
+                    <a ui-sref="index.servicesLaser" ui-sref-active="nav-active">
+                        <img src="img/icon/laser.svg">
+                    </a>
+                  </li>
+                  <li>
+                    <a ui-sref="index.products" ui-sref-active="nav-active">
+                        <img src="img/icon/barcode-product.svg">
+                    </a>
+                  </li>
+                  <li>
+                    <a ui-sref="admin" ui-sref-active="nav-active">
+                        <img src="img/icon/three.svg">
+                    </a>
+                  </li>
                 </ul>
             </div>
           </div>

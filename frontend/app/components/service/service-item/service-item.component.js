@@ -17,17 +17,16 @@ export const ServiceItemComponent = {
   controller,
   template: `
     <div class="row box-product pb-100">
-        <div class="col s3" ng-repeat="service in $ctrl.data
+        <div class="col s12 m4 l3" ng-repeat="service in $ctrl.data
                                       | filter:$ctrl.search.input
                                       | filter:$ctrl.search.type1
                                       | filter:$ctrl.search.type2
                                       | filter:$ctrl.search.type3
-                                      | filter:$ctrl.search.type4
-                                      | filter:$ctrl.search.type5">
+                                      | filter:$ctrl.search.type4">
               <div class="card">
 
                 <div class="card-image">
-                  <img class="activator" src="img/service/{{service.img}}.jpg">
+                  <img class="activator" src="img/service/{{service.img.name}}.jpg"  ng-style="service.img.style">
                   <span class="card-title">{{service.type}}</span>
                 </div>
 

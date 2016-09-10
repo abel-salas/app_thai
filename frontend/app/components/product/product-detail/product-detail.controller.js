@@ -15,37 +15,67 @@ class ProductDetailController {
 
             this.styleInline = {
                 "top": "0px",
-                "width": "100%"
+                "width": "100%",
+                "left": "0px"
             };
 
             this.input = {
                 "top": 0,
-                "width": 100
+                "width": 100,
+                "left": "0"
             };
 
         } else {
 
-            console.log(this.product);
-
             this.styleInline = this.product.img.style;
+
+            // TODO when all products old is modified
+
+            if (typeof(this.product.img) === "string") {
+                let name = this.product.img;
+                this.product.img = {
+                    "name": name,
+                    "style": {}
+                }
+            }
+
+            if (angular.isUndefined(this.styleInline)) {
+                this.styleInline = {
+                    "top": "0px",
+                    "width": "100%",
+                    "left": "0px"
+                };
+            }
+
+            if (angular.isUndefined(this.styleInline.left)) {
+                this.styleInline.left = "0px";
+            }
+            //
 
             let top = this.styleInline.top.split("px");
             let width = this.styleInline.width.split("%");
+            let left = this.styleInline.left.split("px");
 
             this.input = {
                 "top": top[0],
-                "width": width[0]
+                "width": width[0],
+                "left": left[0]
             };
-
         }
     }
 
     insertPx(value) {
 
-        if (value == "top") {
-            this.styleInline[value] = this.input[value] + "px";
-        } else {
-            this.styleInline[value] = this.input[value] + "%";
+        switch (value){
+            case "top":
+                this.styleInline[value] = this.input[value] + "px";
+                break;
+            case "left":
+                this.styleInline[value] = this.input[value] + "px";
+                break;
+            case "width":
+                this.styleInline[value] = this.input[value] + "%";
+                break;
         }
 
     }
@@ -53,8 +83,6 @@ class ProductDetailController {
     submitForm(product) {
 
         product.img.style = this.styleInline;
-
-        console.log(product)
 
         switch (this.createProduct) {
             case true:

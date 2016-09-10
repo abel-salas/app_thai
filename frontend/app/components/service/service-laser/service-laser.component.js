@@ -1,6 +1,6 @@
-import controller from './service-list.controller.js'
+import controller from './service-laser.controller.js'
 
-export const ServiceListComponent = {
+export const ServiceLaserComponent = {
     bindings: {
         services: '<'
     },
@@ -15,18 +15,6 @@ export const ServiceListComponent = {
           </div>
 
           <div class="input-field col s7">
-
-               <input type="checkbox" id="test1"
-                      ng-model="$ctrl.search.type1"
-                      ng-false-value="''"
-                      ng-true-value="'tratamientos'"/>
-               <label for="test1" class="mr-20">Tratamientos</label>
-
-               <input type="checkbox" id="test2"
-                      ng-model="$ctrl.search.type2"
-                      ng-false-value="''"
-                      ng-true-value="'depilacion'"/>
-               <label for="test2" class="mr-20">Depilación</label>
 
                <input type="checkbox" id="test3"
                       ng-model="$ctrl.search.type3"

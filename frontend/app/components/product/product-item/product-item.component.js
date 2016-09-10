@@ -17,7 +17,7 @@ export const ProductItemComponent = {
     controller,
     template: `
            <div class="row box-product pb-100">
-                <div class="col s3" ng-repeat="product in $ctrl.data
+                <div class="col s12 m4 l3" ng-repeat="product in $ctrl.data
                                       | filter:$ctrl.search.input
                                       | filter:$ctrl.search.type1
                                       | filter:$ctrl.search.type2

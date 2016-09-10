@@ -15,5 +15,4 @@ class ServiceItemController {
     }
 
 }
-
 export default ServiceItemController

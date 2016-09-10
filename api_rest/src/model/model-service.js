@@ -10,8 +10,8 @@ var service = mongoose.Schema({
     name: String,
     type: String,
     price: Number,
-    brand: String,
-    img: String,
+    gender: String,
+    img: Object,
     description: String,
     created: Date,
     modified: Date

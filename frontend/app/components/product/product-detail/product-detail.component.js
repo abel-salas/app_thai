@@ -9,7 +9,7 @@ export const ProductDetailComponent = {
   template: `
     <article class="card">
       <section class="card-content">
-      {{$ctrl.product}}
+
          <div class="row">
           <form class="col s12 mt-20" ng-submit="$ctrl.submitForm($ctrl.product)">
             <div class="row">
@@ -56,11 +56,15 @@ export const ProductDetailComponent = {
                   <div class="col s6">
                     <p>Ancho de la imagen:</p>
                     <p class="range-field">
-                      <input type="range" id="test5" min="-100" max="100" ng-model="$ctrl.input.top" ng-change="$ctrl.insertPx('top')"/>
+                      <input type="range" id="test5" min="-100" max="150" ng-model="$ctrl.input.top" ng-change="$ctrl.insertPx('top')"/>
                     </p>
                     <p>Posicion vertical de la imagen:</p>
                     <p class="range-field">
-                      <input type="range" id="test5" min="50" max="150" ng-model="$ctrl.input.width" ng-change="$ctrl.insertPx('width')"/>
+                      <input type="range" id="test6" min="50" max="150" ng-model="$ctrl.input.width" ng-change="$ctrl.insertPx('width')"/>
+                    </p>
+                    <p>Posicion lateral de la imagen:</p>
+                    <p class="range-field">
+                      <input type="range" id="test7" min="-100" max="150" ng-model="$ctrl.input.left" ng-change="$ctrl.insertPx('left')"/>
                     </p>
                   </div>
                 </div>

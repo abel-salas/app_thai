@@ -34,6 +34,76 @@ exports.getAllServices = function(req, res) {
 
 };
 
+exports.getServicesWoman = function(req, res) {
+
+  Service.find({gender:'woman'}, function (err, AllServicesWoman) {
+
+    if (err) {
+      return res.status(400).json({
+        status: 400,
+        content: {
+          message: err.toString()
+        }
+      });
+    }
+
+    res.status(res.statusCode).json({
+      status: res.statusCode,
+      message: 'AllServicesWoman Array',
+      data: AllServicesWoman
+    });
+
+  });
+
+};
+
+exports.getServicesMen = function(req, res) {
+
+  Service.find({gender:'men'}, function (err, AllServicesMen) {
+
+    if (err) {
+      return res.status(400).json({
+        status: 400,
+        content: {
+          message: err.toString()
+        }
+      });
+    }
+
+    res.status(res.statusCode).json({
+      status: res.statusCode,
+      message: 'AllServicesMen Array',
+      data: AllServicesMen
+    });
+
+  });
+
+};
+
+
+exports.getServicesLaser = function(req, res) {
+
+  Service.find({gender:'laser'}, function (err, AllServicesLaser) {
+
+    if (err) {
+      return res.status(400).json({
+        status: 400,
+        content: {
+          message: err.toString()
+        }
+      });
+    }
+
+    res.status(res.statusCode).json({
+      status: res.statusCode,
+      message: 'AllServicesLaser Array',
+      data: AllServicesLaser
+    });
+
+  });
+
+};
+
 
 exports.addService = function(req, res) {
 
@@ -41,7 +111,7 @@ exports.addService = function(req, res) {
     "name": req.body.name,
     "type": req.body.type,
     "price": req.body.price,
-    "brand": req.body.brand,
+    "gender": req.body.gender,
     "img": req.body.img,
     "description": req.body.description,
     "created": new Date()
@@ -71,7 +141,7 @@ exports.updateService = function(req, res){
       service.name = req.body.name;
       service.type = req.body.type;
       service.price = req.body.price;
-      service.brand = req.body.brand;
+      service.gender = req.body.gender;
       service.img = req.body.img;
       service.description = req.body.description;
       service.modified = new Date();
