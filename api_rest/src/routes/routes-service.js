@@ -20,8 +20,8 @@ module.exports = function(app, request) {
    * PRODUCT GET SERVICES
    */
 
-  //app.get('/services/woman', controller.getServicesWoman);
-  app.get('/services/woman', controller.getAllServices);
+  app.get('/services/woman', controller.getServicesWoman);
+  //app.get('/services/woman', controller.getAllServices);
 
   /*
    * PRODUCT GET SERVICES

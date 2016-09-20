@@ -16,6 +16,7 @@ api_rest:
   build: /home/app_thai/api_rest
   environment:
      - ENVIRONMENT=dev
+  privileged: true
   volumes:
        - /home/app_thai/api_rest:/home/app_thai/api_rest
   ports:

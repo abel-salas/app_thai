@@ -13,7 +13,7 @@ Name=OpenApp
 Comment=Start Application
 
 # The path to the folder in which the executable is run
-Path=/home/app_thai
+Path=/home/app_thai/launch/
 
 # The executable of the application.
 Exec=/home/app_thai/launch/init.sh

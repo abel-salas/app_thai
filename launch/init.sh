@@ -3,14 +3,11 @@
 function appStart() {
    cd $root_directory;
    sudo docker-compose up -d;
-   sleep 10;
-   chromium-browser --kiosk http://localhost:8080;
 }
 
 function appStop() {
    cd $root_directory;
    sudo docker-compose stop;
-   killall chromium-browser
 }
 
 function appLogs() {
@@ -25,14 +22,14 @@ function appRemove() {
 
 function backupDb(){
     cd $root_directory;
-    tar -zcvf /home/abel/Dropbox/EsteticaThai/db_$DATE.tar.gz /var/mongo/data
+    tar -zcvf /home/thai/Dropbox/EsteticaThai/db_$DATE.tar.gz /var/mongo/data
 }
 ##################################################
 
 
 ################### Variables ####################
 DATE=`date +%Y-%m-%d`
-dialog_title="CDmon's Panell de Gestió Interna"
+dialog_title="ESTETICA THAI"
 root_directory="/home/app_thai/launch/"
 
 # Menu exit & cancel behavior
@@ -51,9 +48,9 @@ while true ; do
    --title "[ MENU PGI ] [ Dia: ${DATE} ]" \
    --cancel-label "Exit" \
    --menu "Elige una tarea" 14 50 10 \
-   Start "Start App" \
+   Start "Iniciar Aplicacion" \
+   Stop "Apagar Aplicacion" \
    Logs "Logs Containers" \
-   Stop "Stop Containers" \
    Reload "Restart Containers" \
    Backup "Copia de seguridad de la base de datos" \
    2>&1 1>&3)

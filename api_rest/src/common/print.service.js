@@ -35,10 +35,9 @@ exports.printOrder = (obj) => {
         };
 
         if(print){
-            console.log('Send Printer Order => ', print, ticket);
+            console.log('Send Printer Order => ');
             sendPrinter(ticket);
         }
-
 
     });
 
@@ -63,7 +62,7 @@ exports.printCart = (obj) => {
 
     printer.init({
         type: 'bixolon',
-        interface: '/dev/usb/lp0'
+        interface: '/dev/usb/lp1'
     });
 
     printer.isPrinterConnected( isConnected => {
@@ -123,7 +122,7 @@ function sendPrinter(ticket){
 
     printer.init({
         type: 'bixolon',
-        interface: '/dev/usb/lp0'
+        interface: '/dev/usb/lp1'
     });
 
     printer.isPrinterConnected( isConnected => {
@@ -183,8 +182,8 @@ function sendPrinter(ticket){
             printer.setTextDoubleWidth();
             printer.underlineThick(true); // line
             printer.tableCustom([
-                {text: 'TOTAL ', align: "LEFT", width: 0.2, bold: true},
-                {text: ticket.total, align: "RIGHT", width: 0.1, bold: true}
+                {text: 'TOTAL ', align: "LEFT", width: 0.15, bold: true},
+                {text: ticket.total, align: "RIGHT", width: 0.15, bold: true}
             ]);
             printer.underlineThick(false); // line
             printer.println(" "); 
