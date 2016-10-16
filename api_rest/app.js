@@ -27,7 +27,6 @@ db.once('open', function () {
     console.log('Connected with database!  ');
 });
 
-
 var APP_ENV = process.env.ENVIRONMENT;
 if (APP_ENV == undefined) {
     APP_ENV = "pre"
@@ -54,9 +53,11 @@ app.use(bodyParser.json(), function (req, res, next) {
 app.listen(nconf.get('APP_PORT'));
 
 
+require('./src/routes/routes-statistics')(app, request);
 require('./src/routes/routes-user')(app, request);
 require('./src/routes/routes-service')(app, request);
 require('./src/routes/routes-product')(app, request);
 require('./src/routes/routes-auth')(app, request);
 require('./src/routes/routes-cart')(app, request);
+require('./src/routes/routes-bill')(app, request);
 require('./src/routes/routes-order')(app, request);

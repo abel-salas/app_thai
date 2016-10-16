@@ -12,6 +12,9 @@ export const UserListComponent = {
                   <input id="icon_prefix" type="text" class="validate" ng-model="$ctrl.search">
                   <label for="icon_prefix">First Name</label>
              </div>
+             <div class="col s3">
+                <label style="margin-top:30px">{{$ctrl.users.length}} Usuarios</label>
+             </div>
          </div>
         <div class="padding-filters-top">
             <user-item data="$ctrl.users" on-say-hello="$ctrl.sayHello($event);" input-search="$ctrl.search"></user-item>

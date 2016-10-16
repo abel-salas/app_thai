@@ -20,4 +20,6 @@ module.exports = function(app, request) {
     /* POST init bill id number */
     app.post('/order/bill/init/:number', controllerBillNumber.initBillId);
 
+    app.get('/order/all/', controller.getAllOrders);
+
 }
