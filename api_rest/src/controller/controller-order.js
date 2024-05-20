@@ -84,4 +84,19 @@ exports.getOrdersByUser = (req, res) => {
 
 };
 
+exports.getAllOrders = (req, res) => {
+    console.log('_________ get getAllOrders ________');
+
+    Order.find({}, function (err, order) {
+
+        if (order.length >= 0) {
+            common.responseDecorator(err, res, order, 'Return all order by cart')
+        } else {
+            common.responseDecorator(err, res, order, 'Cart doesn t orders')
+        }
+
+    })
+
+};
+
 

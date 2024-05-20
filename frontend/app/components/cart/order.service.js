@@ -125,4 +125,12 @@ export default class OrderService {
         return deferred.promise;
     }
 
+    getAllOrders(cartId) {
+        var deferred = this.$q.defer();
+        this.$http.get(IP_API + PORT + '/order/all/')
+            .then(res => deferred.resolve(res.data.data))
+            .catch(error => deferred.reject(error));
+        return deferred.promise;
+    }
+
 }

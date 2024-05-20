@@ -16,6 +16,14 @@ export default class ServiceService {
         return deferred.promise;
     }
 
+    getAllServices() {
+        var deferred = this.$q.defer();
+        this.$http.get(IP_API + PORT + '/services/')
+            .then(response => deferred.resolve(response.data.data))
+            .catch(error => deferred.reject(error));
+        return deferred.promise;
+    }
+
     getService(id) {
         var deferred = this.$q.defer();
         this.$http.get(IP_API + PORT + '/service/' + id)

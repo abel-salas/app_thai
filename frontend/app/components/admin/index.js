@@ -1,10 +1,14 @@
 import angular from 'angular'
 
 import adminCart from './admin-cart'
+import adminBill from './admin-bill'
+import dashboard from './dashboard'
 
 const admin = angular
     .module('admin', [
-        adminCart
+        adminCart,
+        adminBill,
+        dashboard
     ])
     .config(($stateProvider, $urlRouterProvider) => {
         $stateProvider
@@ -13,10 +17,12 @@ const admin = angular
                 template: `
                     <ac-header></ac-header>
                     <div class="row">
-                        <div class="col s2 admin-nav" ng-style="vm.fullHeightStyle">
+                        <div class="col s2"></div>
+                        <div class="col s2 admin-nav fixed" ng-style="vm.fullHeightStyle">
                             <ul class="sidenavAdmin">
-                                <li><a href="#/admin"><i class="material-icons left">dashboard</i>Dashboard</a></li>
+                                <li><a href="#/admin/dashboard"><i class="material-icons left">dashboard</i>Dashboard</a></li>
                                 <li><a href="#/admin/cartList"><i class="material-icons left">lock</i>Caja</a></li>
+                                <li><a href="#/admin/billList"><i class="material-icons left">lock</i>Facturas</a></li>
                             </ul>
                         </div>
                         <div class="col s10" ui-view></div>
@@ -37,3 +43,4 @@ const admin = angular
     .name
 
 export default admin
+

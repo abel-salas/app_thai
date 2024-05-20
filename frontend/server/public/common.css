@@ -100,7 +100,9 @@ ul{
     padding: 10px;
     display: block;
 }
-
+.fixed{
+    position: fixed;
+}
 /* BUTTON ADD + */
 .addfixed{
     position: fixed;

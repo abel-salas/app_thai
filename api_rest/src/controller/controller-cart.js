@@ -3,8 +3,6 @@ const Order = require("../model/model-order.js");
 const common = require("../common/response.decorator.js");
 const servicePrint = require("../common/print.service.js")
 
-var Promise = require('promise');
-
 exports.createCart = (req, res) => {
     console.log('_________ Post create cart ________');
 
